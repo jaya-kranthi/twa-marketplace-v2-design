@@ -1,0 +1,15 @@
+{
+  "name": "twa-marketplace-v2-design",
+  "project": "twa-marketplace-v2",
+  "project_id": "twa-marketplace-v2",
+  "scaffolded_by": "scaffold-design",
+  "template": "design-repo-mockups-only",
+  "mockups_only": true,
+  "repo_layout": "poly-repo",
+  "project_root": "/Users/jayakranthi/MinfyProjects/twa-marketplace-v2",
+  "design_repo": {
+    "name": "twa-marketplace-v2-design",
+    "repo_url": "https://github.com/jaya-kranthi/twa-marketplace-v2-design.git"
+  },
+  "confluence_parent_page_url": "https://minfyhelpdesk.atlassian.net/wiki/spaces/UED/pages/3797090305/TWA+Weather+Data+Marketplace+v2"
+}
