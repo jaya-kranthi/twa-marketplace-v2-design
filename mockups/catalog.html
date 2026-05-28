@@ -26,14 +26,22 @@ tailwind.config = { theme: { extend: {
       <div class="h-8 w-8 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
       <span class="font-semibold">TWA Marketplace</span>
     </div>
-    <a href="./catalog.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Catalog</a><a href="./account.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Account</a>
+    <a href="./catalog.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Catalog</a>
   </aside>
   <div class="flex-1 flex flex-col min-w-0">
     <header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 md:px-6 gap-3">
       <input placeholder="Search datasets…" class="hidden sm:block flex-1 max-w-md rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
       <div class="flex items-center gap-3">
         <span class="text-xs px-2 py-1 rounded-full bg-accent-500/15 text-accent-700 font-medium">Org User</span>
-        <div class="h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</div>
+        <details class="relative">
+          <summary class="list-none cursor-pointer h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</summary>
+          <div class="absolute right-0 mt-2 w-44 bg-white border border-slate-200 rounded-xl shadow-lg py-1 z-10">
+            <a href="./account.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Account</a>
+            <a href="./settings.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Settings</a>
+            <div class="border-t border-slate-100 my-1"></div>
+            <a href="./signin.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Sign out</a>
+          </div>
+        </details>
       </div>
     </header>
     <main class="p-4 md:p-8 flex-1 max-w-[1280px] w-full mx-auto">
@@ -53,42 +61,78 @@ tailwind.config = { theme: { extend: {
       <input placeholder="Search datasets — e.g. 'tropical cyclone rainfall 2024'" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
       <span class="absolute right-3 top-2.5 text-xs text-accent-600 font-medium">NL search</span>
     </div>
-    <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
-    <a href="./dataproduct-detail.html" class="block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition">
-      <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-semibold">Tropical Cyclone Rainfall</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-      <p class="text-sm text-slate-500 mb-3">Hourly accumulated rainfall from satellite-derived estimates.</p>
-      <div class="flex flex-wrap gap-1 mb-3"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">rainfall</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">cyclone</span></div>
-      <div class="text-xs text-slate-400">Updated 2d ago</div>
+    <div class="flex flex-col gap-3">
+    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
+      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Tropical Cyclone Rainfall</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
+        <p class="text-sm text-slate-500 mb-1 truncate">Hourly accumulated rainfall from satellite-derived estimates.</p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 North Atlantic Basin</span>
+          <span>Updated 2d ago</span>
+          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">rainfall</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">cyclone</span></span>
+        </div>
+      </div>
     </a>
-    <a href="./dataproduct-detail.html" class="block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition">
-      <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-semibold">Sea Surface Temperature</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-      <p class="text-sm text-slate-500 mb-3">Daily SST grids across tropical basins.</p>
-      <div class="flex flex-wrap gap-1 mb-3"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">sst</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">ocean</span></div>
-      <div class="text-xs text-slate-400">Updated 5d ago</div>
+    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
+      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Sea Surface Temperature</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
+        <p class="text-sm text-slate-500 mb-1 truncate">Daily SST grids across tropical basins.</p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 Indian Ocean</span>
+          <span>Updated 5d ago</span>
+          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">sst</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">ocean</span></span>
+        </div>
+      </div>
     </a>
-    <a href="./dataproduct-detail.html" class="block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition">
-      <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-semibold">Cloud-Top Brightness</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Locked</span></div>
-      <p class="text-sm text-slate-500 mb-3">IR brightness temperature composites.</p>
-      <div class="flex flex-wrap gap-1 mb-3"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">infrared</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">clouds</span></div>
-      <div class="text-xs text-slate-400">Updated 1w ago</div>
+    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
+      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Cloud-Top Brightness</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Locked</span></div>
+        <p class="text-sm text-slate-500 mb-1 truncate">IR brightness temperature composites.</p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 West Pacific</span>
+          <span>Updated 1w ago</span>
+          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">infrared</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">clouds</span></span>
+        </div>
+      </div>
     </a>
-    <a href="./dataproduct-detail.html" class="block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition">
-      <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-semibold">Wind Shear Profiles</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Locked</span></div>
-      <p class="text-sm text-slate-500 mb-3">Vertical wind shear analysis layers.</p>
-      <div class="flex flex-wrap gap-1 mb-3"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">wind</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">shear</span></div>
-      <div class="text-xs text-slate-400">Updated 3w ago</div>
+    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
+      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Wind Shear Profiles</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Locked</span></div>
+        <p class="text-sm text-slate-500 mb-1 truncate">Vertical wind shear analysis layers.</p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 Caribbean Sea</span>
+          <span>Updated 3w ago</span>
+          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">wind</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">shear</span></span>
+        </div>
+      </div>
     </a>
-    <a href="./dataproduct-detail.html" class="block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition">
-      <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-semibold">Lightning Density</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-      <p class="text-sm text-slate-500 mb-3">Flash density from optical sensors.</p>
-      <div class="flex flex-wrap gap-1 mb-3"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">lightning</span></div>
-      <div class="text-xs text-slate-400">Updated 1d ago</div>
+    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
+      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Lightning Density</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
+        <p class="text-sm text-slate-500 mb-1 truncate">Flash density from optical sensors.</p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 Bay of Bengal</span>
+          <span>Updated 1d ago</span>
+          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">lightning</span></span>
+        </div>
+      </div>
     </a>
-    <a href="./dataproduct-detail.html" class="block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition">
-      <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-semibold">Aerosol Optical Depth</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-      <p class="text-sm text-slate-500 mb-3">AOD over tropical regions.</p>
-      <div class="flex flex-wrap gap-1 mb-3"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">aerosol</span></div>
-      <div class="text-xs text-slate-400">Updated 4d ago</div>
+    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
+      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Aerosol Optical Depth</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
+        <p class="text-sm text-slate-500 mb-1 truncate">AOD over tropical regions.</p>
+        <div class="flex items-center gap-3 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 South Pacific</span>
+          <span>Updated 4d ago</span>
+          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">aerosol</span></span>
+        </div>
+      </div>
     </a></div>
     <div class="flex items-center justify-between mt-6 text-sm text-slate-500"><span>Showing 1–6 of 24</span>
       <div class="flex gap-1"><button class="px-3 py-1 rounded border border-slate-300">Prev</button><button class="px-3 py-1 rounded border border-slate-300 bg-white">Next</button></div>

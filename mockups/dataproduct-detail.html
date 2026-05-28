@@ -26,14 +26,22 @@ tailwind.config = { theme: { extend: {
       <div class="h-8 w-8 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
       <span class="font-semibold">TWA Marketplace</span>
     </div>
-    <a href="./catalog.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Catalog</a><a href="./account.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Account</a>
+    <a href="./catalog.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Catalog</a>
   </aside>
   <div class="flex-1 flex flex-col min-w-0">
     <header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 md:px-6 gap-3">
       <input placeholder="Search datasets…" class="hidden sm:block flex-1 max-w-md rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
       <div class="flex items-center gap-3">
         <span class="text-xs px-2 py-1 rounded-full bg-accent-500/15 text-accent-700 font-medium">Org User</span>
-        <div class="h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</div>
+        <details class="relative">
+          <summary class="list-none cursor-pointer h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</summary>
+          <div class="absolute right-0 mt-2 w-44 bg-white border border-slate-200 rounded-xl shadow-lg py-1 z-10">
+            <a href="./account.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Account</a>
+            <a href="./settings.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Settings</a>
+            <div class="border-t border-slate-100 my-1"></div>
+            <a href="./signin.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Sign out</a>
+          </div>
+        </details>
       </div>
     </header>
     <main class="p-4 md:p-8 flex-1 max-w-[1280px] w-full mx-auto">
@@ -48,10 +56,12 @@ tailwind.config = { theme: { extend: {
     <h3 class="font-semibold mb-3">About</h3>
     <p class="text-sm text-slate-600 mb-4">Hourly accumulated rainfall from satellite-derived estimates across tropical basins.</p>
     <dl class="text-sm space-y-2">
+      <div class="flex justify-between"><dt class="text-slate-500">Location</dt><dd class="text-accent-700 font-medium">North Atlantic Basin</dd></div>
       <div class="flex justify-between"><dt class="text-slate-500">Category</dt><dd>Precipitation</dd></div>
       <div class="flex justify-between"><dt class="text-slate-500">Versions</dt><dd>3</dd></div>
       <div class="flex justify-between"><dt class="text-slate-500">Latest</dt><dd>2026-05-26</dd></div>
     </dl>
+    <p class="text-xs text-slate-400 mt-3">Location read from ingestion zip metadata.</p>
   </div>
   <div class="md:col-span-2 bg-white rounded-xl border border-slate-200 overflow-hidden">
     <div class="px-5 py-3 border-b border-slate-200 font-semibold">Datasets (versions)</div>
@@ -59,19 +69,19 @@ tailwind.config = { theme: { extend: {
       <tr><th class="px-4 py-2">Version</th><th class="px-4 py-2">File</th><th class="px-4 py-2">Size</th><th class="px-4 py-2">Published</th><th class="px-4 py-2">Lifecycle</th><th class="px-4 py-2"></th></tr></thead>
       <tbody><tr class="border-t border-slate-200">
       <td class="px-4 py-3 font-mono text-sm">v3</td>
-      <td class="px-4 py-3 font-mono text-sm">tcr_2024_q1.nc</td>
+      <td class="px-4 py-3 font-mono text-sm">tcr_2024_q1.zip</td>
       <td class="px-4 py-3 font-mono text-sm text-slate-500">2.4 GB</td>
       <td class="px-4 py-3 text-sm text-slate-500">2026-05-26</td>
       <td class="px-4 py-3"><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-700">Active</span></td>
       <td class="px-4 py-3 text-right"><button class="rounded-lg px-4 py-2 text-sm font-medium bg-white border border-slate-300 hover:bg-neutral-50">Download</button></td></tr><tr class="border-t border-slate-200">
       <td class="px-4 py-3 font-mono text-sm">v2</td>
-      <td class="px-4 py-3 font-mono text-sm">tcr_2023_q4.nc</td>
+      <td class="px-4 py-3 font-mono text-sm">tcr_2023_q4.zip</td>
       <td class="px-4 py-3 font-mono text-sm text-slate-500">2.1 GB</td>
       <td class="px-4 py-3 text-sm text-slate-500">2026-02-12</td>
       <td class="px-4 py-3"><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-700">Active</span></td>
       <td class="px-4 py-3 text-right"><button class="rounded-lg px-4 py-2 text-sm font-medium bg-white border border-slate-300 hover:bg-neutral-50">Download</button></td></tr><tr class="border-t border-slate-200">
       <td class="px-4 py-3 font-mono text-sm">v1</td>
-      <td class="px-4 py-3 font-mono text-sm">tcr_2023_q3.nc</td>
+      <td class="px-4 py-3 font-mono text-sm">tcr_2023_q3.zip</td>
       <td class="px-4 py-3 font-mono text-sm text-slate-500">1.9 GB</td>
       <td class="px-4 py-3 text-sm text-slate-500">2025-11-03</td>
       <td class="px-4 py-3"><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Deprecated</span></td>
