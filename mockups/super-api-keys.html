@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API Key Management — TWA Super Admin</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="logo" style="padding:.4rem .7rem 1rem">TWA <b>Super</b></div>
+    <nav style="display:flex;flex-direction:column;gap:.2rem">
+      <a class="navitem" href="super-dashboard.html">▦ Dashboard</a>
+      <a class="navitem" href="super-orgs.html">⚑ Org Approvals</a>
+      <a class="navitem" href="super-dataproducts.html">▤ Catalog</a>
+      <a class="navitem active" href="super-api-keys.html">⚿ API Keys</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="toolbar"><h1>Ingestion API Keys</h1><button class="btn btn-primary" onclick="document.getElementById('ck').showModal()">+ Create key</button></div>
+    <div class="card" style="overflow:hidden"><table class="table">
+      <thead><tr><th>Label</th><th>Scope (data product)</th><th>Created</th><th>Last used</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Phantom curator — precip</td><td>Global Hourly Precipitation</td><td>2026-04-01</td><td>2h ago</td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-ghost" onclick="document.getElementById('rv').showModal()">Revoke</button></td></tr>
+        <tr><td>Phantom curator — temp</td><td>Surface Temperature Grid</td><td>2026-04-01</td><td>1d ago</td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-ghost">Revoke</button></td></tr>
+        <tr style="opacity:.55"><td>Legacy loader</td><td>(all)</td><td>2026-01-10</td><td>30d ago</td><td><span class="badge badge-muted">revoked</span></td><td>—</td></tr>
+      </tbody>
+    </table></div>
+  </main>
+</div>
+<dialog id="ck" class="card" style="padding:1.5rem;max-width:460px;border:none">
+  <h2>Create ingestion API key</h2>
+  <label class="label" style="margin-top:.8rem">Label</label><input class="input" placeholder="Phantom curator — wind">
+  <label class="label" style="margin-top:.8rem">Scope (data product)</label><select class="input"><option>Global Hourly Precipitation</option><option>Surface Temperature Grid</option><option>Wind Vector Fields</option></select>
+  <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1.2rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="document.getElementById('ck').close();document.getElementById('rk').showModal()">Create</button></div>
+</dialog>
+<dialog id="rk" class="card" style="padding:1.5rem;max-width:480px;border:none">
+  <h2>API key created</h2>
+  <div class="badge badge-warn" style="margin:.6rem 0">Copy it now — it will not be shown again.</div>
+  <div class="mono card" style="padding:.7rem;word-break:break-all;background:var(--surface-muted)">twa_ing_8f3c9a2e4b71d6053f0a1c8e9d2b4f67</div>
+  <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1.2rem"><button class="btn btn-secondary">Copy</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Done</button></div>
+</dialog>
+<dialog id="rv" class="card" style="padding:1.5rem;max-width:400px;border:none"><h2>Revoke key?</h2><p class="muted" style="font-size:.9rem;margin:.5rem 0 1.2rem">The ingestion client using this key will immediately fail with 401. This cannot be undone.</p><div style="display:flex;justify-content:flex-end;gap:.5rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-danger" onclick="this.closest('dialog').close()">Revoke</button></div></dialog>
+</body></html>

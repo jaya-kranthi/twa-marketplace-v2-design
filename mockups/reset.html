@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reset Password — TWA Marketplace</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="authwrap">
+  <div class="card" style="width:100%;max-width:400px;padding:2rem">
+    <div class="logo" style="font-size:1.15rem;margin-bottom:.25rem">TWA <b>Marketplace</b></div>
+    <h1 style="margin-bottom:.4rem">Reset your password</h1>
+    <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Enter your email and we'll send a reset link.</p>
+    <form onsubmit="return false">
+      <label class="label" for="e">Email</label>
+      <input class="input" id="e" type="email" placeholder="you@org.com" style="margin-bottom:1rem">
+      <button class="btn btn-primary" style="width:100%" onclick="document.getElementById('ok').style.display='block'">Send reset link</button>
+    </form>
+    <div id="ok" role="status" class="badge badge-ok" style="display:none;margin-top:1rem">Check your email for a reset link.</div>
+    <p class="muted" style="font-size:.85rem;text-align:center;margin-top:1.25rem"><a href="signin.html">Back to sign in</a></p>
+  </div>
+</div>
+</body></html>

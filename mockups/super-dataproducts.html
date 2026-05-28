@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Catalog Management — TWA Super Admin</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="logo" style="padding:.4rem .7rem 1rem">TWA <b>Super</b></div>
+    <nav style="display:flex;flex-direction:column;gap:.2rem">
+      <a class="navitem" href="super-dashboard.html">▦ Dashboard</a>
+      <a class="navitem" href="super-orgs.html">⚑ Org Approvals</a>
+      <a class="navitem active" href="super-dataproducts.html">▤ Catalog</a>
+      <a class="navitem" href="super-api-keys.html">⚿ API Keys</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="toolbar"><h1>Data Products</h1><button class="btn btn-primary" onclick="document.getElementById('cr').showModal()">+ Create data product</button></div>
+    <div class="card" style="overflow:hidden"><table class="table">
+      <thead><tr><th>Name</th><th>Category</th><th>Governance</th><th>Versions</th><th>Lifecycle</th><th>Updated</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Global Hourly Precipitation</td><td>Precipitation</td><td><span class="badge badge-ok">published</span></td><td class="tabular">12</td><td><span class="badge badge-ok">active</span></td><td>2026-05-28</td><td><a href="super-dataproduct-detail.html">Manage</a></td></tr>
+        <tr><td>Surface Temperature Grid</td><td>Temperature</td><td><span class="badge badge-ok">published</span></td><td class="tabular">21</td><td><span class="badge badge-ok">active</span></td><td>2026-05-27</td><td><a href="super-dataproduct-detail.html">Manage</a></td></tr>
+        <tr><td>Sea Surface Salinity</td><td>Ocean</td><td><span class="badge badge-warn">draft</span></td><td class="tabular">0</td><td><span class="badge badge-muted">—</span></td><td>2026-05-26</td><td><a href="super-dataproduct-detail.html">Manage</a></td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted" style="font-size:.82rem;margin-top:.8rem">A draft with 0 ingestions cannot be published until at least one dataset is pushed via the ingestion API.</p>
+  </main>
+</div>
+<dialog id="cr" class="card" style="padding:1.5rem;max-width:480px;border:none">
+  <h2>Create data product</h2>
+  <label class="label" style="margin-top:.8rem">Name</label><input class="input" placeholder="e.g. Coastal Wave Height">
+  <label class="label" style="margin-top:.8rem">Category</label><select class="input"><option>Precipitation</option><option>Temperature</option><option>Wind</option><option>Satellite imagery</option><option>Ocean</option></select>
+  <label class="label" style="margin-top:.8rem">Description</label><textarea class="input" rows="3"></textarea>
+  <label class="label" style="margin-top:.8rem">Tags</label><input class="input" placeholder="gridded, hourly, v2">
+  <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1.2rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Create (draft)</button></div>
+</dialog>
+</body></html>

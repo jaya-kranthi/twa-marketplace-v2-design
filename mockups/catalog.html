@@ -1,147 +1,54 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Catalog — TWA Marketplace</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>
-tailwind.config = { theme: { extend: {
-  fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['ui-monospace','Menlo','monospace'] },
-  colors: {
-    brand: {50:'#eff8ff',100:'#dbeefe',200:'#bfe1fe',300:'#93cefd',400:'#60b2fa',500:'#3b93f5',600:'#2575ea',700:'#1d5fd7',800:'#1e4eae',900:'#1d4489',950:'#172b53'},
-    accent: {300:'#76e7dd',400:'#37d2c7',500:'#1bb6ad',600:'#10928d',700:'#117472'},
-  }
-} } }
-</script>
-<style>body{font-family:Inter,system-ui,sans-serif}</style>
-</head>
-<body class="bg-neutral-50 text-slate-900">
-
-<div class="min-h-screen flex">
-  <aside class="hidden md:flex w-60 flex-col border-r border-slate-200 bg-white p-4 gap-1">
-    <div class="flex items-center gap-2 mb-5 px-1">
-      <div class="h-8 w-8 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
-      <span class="font-semibold">TWA Marketplace</span>
-    </div>
-    <a href="./catalog.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Catalog</a>
-  </aside>
-  <div class="flex-1 flex flex-col min-w-0">
-    <header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 md:px-6 gap-3">
-      <input placeholder="Search datasets…" class="hidden sm:block flex-1 max-w-md rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
-      <div class="flex items-center gap-3">
-        <span class="text-xs px-2 py-1 rounded-full bg-accent-500/15 text-accent-700 font-medium">Org User</span>
-        <details class="relative">
-          <summary class="list-none cursor-pointer h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</summary>
-          <div class="absolute right-0 mt-2 w-44 bg-white border border-slate-200 rounded-xl shadow-lg py-1 z-10">
-            <a href="./account.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Account</a>
-            <a href="./settings.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Settings</a>
-            <div class="border-t border-slate-100 my-1"></div>
-            <a href="./signin.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Sign out</a>
-          </div>
-        </details>
-      </div>
-    </header>
-    <main class="p-4 md:p-8 flex-1 max-w-[1280px] w-full mx-auto">
-      
-<div class="flex items-center justify-between mb-6"><h1 class="text-2xl font-semibold">Dataset Catalog</h1></div>
-<div class="flex flex-col md:flex-row gap-6">
-  <aside class="md:w-56 shrink-0 space-y-4">
-    <div class="bg-white rounded-xl border border-slate-200 p-4">
-      <h4 class="text-sm font-semibold mb-2">Category</h4>
-      <label class="flex items-center gap-2 text-sm text-slate-600 mb-1"><input type="checkbox"/> Precipitation</label>
-      <label class="flex items-center gap-2 text-sm text-slate-600 mb-1"><input type="checkbox"/> Ocean</label>
-      <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox"/> Atmosphere</label>
-    </div>
-  </aside>
-  <div class="flex-1">
-    <div class="relative mb-4">
-      <input placeholder="Search datasets — e.g. 'tropical cyclone rainfall 2024'" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
-      <span class="absolute right-3 top-2.5 text-xs text-accent-600 font-medium">NL search</span>
-    </div>
-    <div class="flex flex-col gap-3">
-    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
-      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Tropical Cyclone Rainfall</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-        <p class="text-sm text-slate-500 mb-1 truncate">Hourly accumulated rainfall from satellite-derived estimates.</p>
-        <div class="flex items-center gap-3 text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 North Atlantic Basin</span>
-          <span>Updated 2d ago</span>
-          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">rainfall</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">cyclone</span></span>
-        </div>
-      </div>
-    </a>
-    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
-      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Sea Surface Temperature</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-        <p class="text-sm text-slate-500 mb-1 truncate">Daily SST grids across tropical basins.</p>
-        <div class="flex items-center gap-3 text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 Indian Ocean</span>
-          <span>Updated 5d ago</span>
-          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">sst</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">ocean</span></span>
-        </div>
-      </div>
-    </a>
-    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
-      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Cloud-Top Brightness</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Locked</span></div>
-        <p class="text-sm text-slate-500 mb-1 truncate">IR brightness temperature composites.</p>
-        <div class="flex items-center gap-3 text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 West Pacific</span>
-          <span>Updated 1w ago</span>
-          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">infrared</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">clouds</span></span>
-        </div>
-      </div>
-    </a>
-    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
-      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Wind Shear Profiles</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-neutral-200 text-slate-600">Locked</span></div>
-        <p class="text-sm text-slate-500 mb-1 truncate">Vertical wind shear analysis layers.</p>
-        <div class="flex items-center gap-3 text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 Caribbean Sea</span>
-          <span>Updated 3w ago</span>
-          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">wind</span><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">shear</span></span>
-        </div>
-      </div>
-    </a>
-    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
-      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Lightning Density</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-        <p class="text-sm text-slate-500 mb-1 truncate">Flash density from optical sensors.</p>
-        <div class="flex items-center gap-3 text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 Bay of Bengal</span>
-          <span>Updated 1d ago</span>
-          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">lightning</span></span>
-        </div>
-      </div>
-    </a>
-    <a href="./dataproduct-detail.html" class="flex items-center gap-5 bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md hover:border-brand-300 transition">
-      <div class="h-14 w-14 shrink-0 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 grid place-items-center text-white font-semibold">DS</div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1"><h3 class="font-semibold truncate">Aerosol Optical Depth</h3><span class="text-xs px-2 py-0.5 rounded-full font-medium bg-accent-500/15 text-accent-700">Entitled</span></div>
-        <p class="text-sm text-slate-500 mb-1 truncate">AOD over tropical regions.</p>
-        <div class="flex items-center gap-3 text-xs text-slate-400">
-          <span class="inline-flex items-center gap-1 text-accent-700 font-medium">📍 South Pacific</span>
-          <span>Updated 4d ago</span>
-          <span class="flex gap-1"><span class="text-xs px-2 py-0.5 rounded bg-neutral-100 text-slate-600">aerosol</span></span>
-        </div>
-      </div>
-    </a></div>
-    <div class="flex items-center justify-between mt-6 text-sm text-slate-500"><span>Showing 1–6 of 24</span>
-      <div class="flex gap-1"><button class="px-3 py-1 rounded border border-slate-300">Prev</button><button class="px-3 py-1 rounded border border-slate-300 bg-white">Next</button></div>
-    </div>
-  </div>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Catalog — TWA Marketplace</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="topbar">
+  <div class="logo">TWA <b>Marketplace</b></div>
+  <nav style="display:flex;gap:.3rem;margin-left:1rem"><a class="navitem active" href="catalog.html">Catalog</a><a class="navitem" href="org-dashboard.html">Admin</a></nav>
+  <div style="flex:1"></div>
+  <button class="btn btn-ghost" onclick="var r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')">◑</button>
+  <details style="position:relative"><summary class="btn btn-secondary" style="list-style:none">jane@acme.com ▾</summary>
+    <div class="card" style="position:absolute;right:0;top:46px;padding:.4rem;min-width:160px"><a class="navitem" href="signin.html">Sign out</a></div>
+  </details>
 </div>
-
-    </main>
+<div class="main" style="max-width:1120px;margin:0 auto">
+  <h1 style="margin-bottom:1rem">Dataset Catalog</h1>
+  <input class="input" placeholder="Search datasets, e.g. &quot;hourly rainfall, last 30 days&quot;" style="margin-bottom:.8rem">
+  <div class="toolbar">
+    <div style="display:flex;gap:.6rem;align-items:center">
+      <select class="input" style="width:auto"><option>All categories</option><option>Precipitation</option><option>Temperature</option><option>Wind</option><option>Satellite imagery</option></select>
+      <div class="chips"><span class="badge">hourly</span><span class="badge">gridded</span><span class="badge">v2</span></div>
+    </div>
+    <select class="input" style="width:auto"><option>Sort: Relevance</option><option>Most recent</option></select>
   </div>
+  <div id="degraded" class="badge badge-warn" style="margin-bottom:1rem">Showing keyword results — smart search temporarily unavailable</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
+    <!-- entitled -->
+    <a class="card" href="dataproduct-detail.html" style="padding:1.1rem;display:block">
+      <div style="display:flex;justify-content:space-between;align-items:start"><h3>Global Hourly Precipitation</h3><span class="badge badge-ok">Entitled</span></div>
+      <p class="muted" style="font-size:.85rem;margin:.4rem 0">Curated hourly rainfall, gridded 0.25°, global coverage.</p>
+      <div class="chips"><span class="badge">Precipitation</span><span class="badge">hourly</span></div>
+      <p class="muted" style="font-size:.78rem;margin-top:.7rem">12 versions</p>
+    </a>
+    <!-- locked -->
+    <a class="card lock" href="dataproduct-detail.html" style="padding:1.1rem;display:block">
+      <div style="display:flex;justify-content:space-between;align-items:start"><h3>Satellite Cloud Mask</h3><span class="badge badge-muted">🔒 Locked</span></div>
+      <p class="muted" style="font-size:.85rem;margin:.4rem 0">Per-pixel cloud classification from satellite imagery.</p>
+      <div class="chips"><span class="badge">Satellite</span><span class="badge">daily</span></div>
+      <p class="muted" style="font-size:.78rem;margin-top:.7rem">Upgrade to access · 8 versions</p>
+    </a>
+    <a class="card" href="dataproduct-detail.html" style="padding:1.1rem;display:block">
+      <div style="display:flex;justify-content:space-between;align-items:start"><h3>Surface Temperature Grid</h3><span class="badge badge-ok">Entitled</span></div>
+      <p class="muted" style="font-size:.85rem;margin:.4rem 0">Daily mean surface temperature, 0.1° resolution.</p>
+      <div class="chips"><span class="badge">Temperature</span><span class="badge">daily</span></div>
+      <p class="muted" style="font-size:.78rem;margin-top:.7rem">21 versions</p>
+    </a>
+    <a class="card lock" href="dataproduct-detail.html" style="padding:1.1rem;display:block">
+      <div style="display:flex;justify-content:space-between;align-items:start"><h3>Wind Vector Fields</h3><span class="badge badge-muted">🔒 Locked</span></div>
+      <p class="muted" style="font-size:.85rem;margin:.4rem 0">U/V wind components at multiple pressure levels.</p>
+      <div class="chips"><span class="badge">Wind</span><span class="badge">6-hourly</span></div>
+      <p class="muted" style="font-size:.78rem;margin-top:.7rem">Upgrade to access · 5 versions</p>
+    </a>
+  </div>
+  <div style="display:flex;justify-content:center;gap:.4rem;margin-top:1.5rem"><button class="btn btn-secondary">‹ Prev</button><button class="btn btn-secondary">1</button><button class="btn btn-secondary">2</button><button class="btn btn-secondary">Next ›</button></div>
 </div>
-</body>
-</html>
+</body></html>

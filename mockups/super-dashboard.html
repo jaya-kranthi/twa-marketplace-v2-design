@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Platform Dashboard — TWA Super Admin</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="logo" style="padding:.4rem .7rem 1rem">TWA <b>Super</b></div>
+    <nav style="display:flex;flex-direction:column;gap:.2rem">
+      <a class="navitem active" href="super-dashboard.html">▦ Dashboard</a>
+      <a class="navitem" href="super-orgs.html">⚑ Org Approvals</a>
+      <a class="navitem" href="super-dataproducts.html">▤ Catalog</a>
+      <a class="navitem" href="super-api-keys.html">⚿ API Keys</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="toolbar"><h1>Platform Dashboard</h1><span class="muted" style="font-size:.8rem">data as of 2026-05-28 09:00</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <a class="card tile" href="#"><div class="muted" style="font-size:.85rem">Platform downloads (30d)</div><div class="v tabular">38,902</div><div class="muted" style="font-size:.8rem">across 46 orgs</div></a>
+      <a class="card tile" href="super-orgs.html"><div class="muted" style="font-size:.85rem">Active orgs / subscriptions</div><div class="v tabular">46</div><div class="muted" style="font-size:.8rem">12 Starter · 28 Pro · 6 Ent</div></a>
+      <a class="card tile" href="super-dataproducts.html"><div class="muted" style="font-size:.85rem">Catalog size</div><div class="v tabular">128</div><div class="muted" style="font-size:.8rem">products · 1,902 ingestions</div></a>
+    </div>
+    <h2 style="margin:1.5rem 0 .6rem">Orgs by tier</h2>
+    <div class="card" style="overflow:hidden"><table class="table">
+      <thead><tr><th>Tier</th><th>Active orgs</th><th>Downloads (30d)</th></tr></thead>
+      <tbody>
+        <tr><td>Enterprise</td><td class="tabular">6</td><td class="tabular">14,210</td></tr>
+        <tr><td>Professional</td><td class="tabular">28</td><td class="tabular">19,884</td></tr>
+        <tr><td>Starter</td><td class="tabular">12</td><td class="tabular">4,808</td></tr>
+      </tbody>
+    </table></div>
+  </main>
+</div>
+</body></html>

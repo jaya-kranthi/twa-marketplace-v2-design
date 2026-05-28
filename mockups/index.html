@@ -1,29 +1,31 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>UX Mockups — TWA Marketplace</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>
-tailwind.config = { theme: { extend: {
-  fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['ui-monospace','Menlo','monospace'] },
-  colors: {
-    brand: {50:'#eff8ff',100:'#dbeefe',200:'#bfe1fe',300:'#93cefd',400:'#60b2fa',500:'#3b93f5',600:'#2575ea',700:'#1d5fd7',800:'#1e4eae',900:'#1d4489',950:'#172b53'},
-    accent: {300:'#76e7dd',400:'#37d2c7',500:'#1bb6ad',600:'#10928d',700:'#117472'},
-  }
-} } }
-</script>
-<style>body{font-family:Inter,system-ui,sans-serif}</style>
-</head>
-<body class="bg-neutral-50 text-slate-900">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TWA Weather Data Marketplace — Mockups</title>
+<link rel="stylesheet" href="app.css">
+</head><body>
+<div class="main" style="max-width:960px;margin:0 auto">
+  <div class="toolbar" style="margin-top:1rem">
+    <div class="logo" style="font-size:1.25rem">TWA <b>Weather Data Marketplace</b></div>
+    <button class="btn btn-secondary" onclick="var r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')">Toggle theme</button>
+  </div>
+  <p class="muted">Static mockups — 14 screens across 4 areas. Nav links are wired between pages.</p>
 
-<div class="max-w-5xl mx-auto px-6 py-12">
-  <div class="flex items-center gap-2 mb-2"><div class="h-9 w-9 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div><h1 class="text-2xl font-semibold">TWA Weather Data Marketplace v2 — UX Mockups</h1></div>
-  <p class="text-slate-500 mb-8">modern-SaaS · weather blue/teal · Account &amp; Settings live in the header menu. <a class="text-brand-700 hover:underline" href="https://minfyhelpdesk.atlassian.net/wiki/spaces/UED/pages/3797090305/TWA+Weather+Data+Marketplace+v2">Project docs (Confluence)</a></p>
-  <div class="mb-8"><h2 class="text-lg font-semibold mb-3">Public / Auth</h2><div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3"><a href="./signin.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Sign in</a><a href="./forgot.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Forgot password</a><a href="./invite.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Accept invite</a><a href="./apply.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Org application</a></div></div><div class="mb-8"><h2 class="text-lg font-semibold mb-3">Org User / Admin</h2><div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3"><a href="./catalog.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Catalog</a><a href="./dataproduct-detail.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Data product detail</a><a href="./org-dashboard.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Org dashboard</a><a href="./org-members.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Members</a><a href="./org-subscription.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Subscription</a></div></div><div class="mb-8"><h2 class="text-lg font-semibold mb-3">Super Admin</h2><div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3"><a href="./admin-dashboard.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Admin dashboard</a><a href="./admin-orgs.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Org approvals</a><a href="./admin-dataproducts.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Data products</a><a href="./admin-dataproduct-editor.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Data product editor</a></div></div><div class="mb-8"><h2 class="text-lg font-semibold mb-3">Header menu (all roles)</h2><div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3"><a href="./account.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Account</a><a href="./settings.html" class="block px-4 py-3 rounded-lg border border-slate-200 hover:shadow-md hover:border-brand-300 transition">Settings — incl. API Keys</a></div></div>
+  <h2 style="margin-top:1.5rem">Public / Auth</h2>
+  <div class="card" style="padding:1rem;margin-top:.6rem">
+    <p><a href="signin.html">S1 · Sign In</a> &nbsp;·&nbsp; <a href="reset.html">S2 · Reset Password</a> &nbsp;·&nbsp; <a href="invite.html">S3 · Accept Invite</a> &nbsp;·&nbsp; <a href="apply.html">S4 · Org Application</a></p>
+  </div>
+  <h2 style="margin-top:1.2rem">Consumer Portal</h2>
+  <div class="card" style="padding:1rem;margin-top:.6rem">
+    <p><a href="catalog.html">S5 · Catalog Browse &amp; Search</a> &nbsp;·&nbsp; <a href="dataproduct-detail.html">S6 · Data Product Detail</a></p>
+  </div>
+  <h2 style="margin-top:1.2rem">Org Admin Console</h2>
+  <div class="card" style="padding:1rem;margin-top:.6rem">
+    <p><a href="org-dashboard.html">S7 · Org Dashboard</a> &nbsp;·&nbsp; <a href="org-members.html">S8 · Members</a> &nbsp;·&nbsp; <a href="org-subscription.html">S9 · Subscription &amp; Entitlements</a></p>
+  </div>
+  <h2 style="margin-top:1.2rem">Super Admin Console</h2>
+  <div class="card" style="padding:1rem;margin-top:.6rem">
+    <p><a href="super-dashboard.html">S10 · Platform Dashboard</a> &nbsp;·&nbsp; <a href="super-orgs.html">S11 · Org Approval Queue</a> &nbsp;·&nbsp; <a href="super-dataproducts.html">S12 · Catalog Management</a> &nbsp;·&nbsp; <a href="super-dataproduct-detail.html">S13 · Data Product Management</a> &nbsp;·&nbsp; <a href="super-api-keys.html">S14 · API Key Management</a></p>
+  </div>
+  <p class="muted" style="margin-top:2rem;font-size:.8rem">TWA Weather Data Marketplace v2 · professional theme · light/dark · WCAG 2.2 AA</p>
 </div>
-</body>
-</html>
+</body></html>

@@ -1,65 +1,32 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Org dashboard — TWA Marketplace</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>
-tailwind.config = { theme: { extend: {
-  fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['ui-monospace','Menlo','monospace'] },
-  colors: {
-    brand: {50:'#eff8ff',100:'#dbeefe',200:'#bfe1fe',300:'#93cefd',400:'#60b2fa',500:'#3b93f5',600:'#2575ea',700:'#1d5fd7',800:'#1e4eae',900:'#1d4489',950:'#172b53'},
-    accent: {300:'#76e7dd',400:'#37d2c7',500:'#1bb6ad',600:'#10928d',700:'#117472'},
-  }
-} } }
-</script>
-<style>body{font-family:Inter,system-ui,sans-serif}</style>
-</head>
-<body class="bg-neutral-50 text-slate-900">
-
-<div class="min-h-screen flex">
-  <aside class="hidden md:flex w-60 flex-col border-r border-slate-200 bg-white p-4 gap-1">
-    <div class="flex items-center gap-2 mb-5 px-1">
-      <div class="h-8 w-8 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
-      <span class="font-semibold">TWA Marketplace</span>
-    </div>
-    <a href="./catalog.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Catalog</a><a href="./org-dashboard.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Org Dashboard</a><a href="./org-members.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Members</a><a href="./org-subscription.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Subscription</a>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Org Dashboard — TWA Marketplace</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="logo" style="padding:.4rem .7rem 1rem">TWA <b>Admin</b></div>
+    <nav style="display:flex;flex-direction:column;gap:.2rem">
+      <a class="navitem active" href="org-dashboard.html">▦ Dashboard</a>
+      <a class="navitem" href="org-members.html">◍ Members</a>
+      <a class="navitem" href="org-subscription.html">★ Subscription</a>
+      <a class="navitem" href="catalog.html">▤ Catalog</a>
+    </nav>
   </aside>
-  <div class="flex-1 flex flex-col min-w-0">
-    <header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 md:px-6 gap-3">
-      <input placeholder="Search datasets…" class="hidden sm:block flex-1 max-w-md rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
-      <div class="flex items-center gap-3">
-        <span class="text-xs px-2 py-1 rounded-full bg-accent-500/15 text-accent-700 font-medium">Org Admin</span>
-        <details class="relative">
-          <summary class="list-none cursor-pointer h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</summary>
-          <div class="absolute right-0 mt-2 w-44 bg-white border border-slate-200 rounded-xl shadow-lg py-1 z-10">
-            <a href="./account.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Account</a>
-            <a href="./settings.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Settings</a>
-            <div class="border-t border-slate-100 my-1"></div>
-            <a href="./signin.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-neutral-50">Sign out</a>
-          </div>
-        </details>
-      </div>
-    </header>
-    <main class="p-4 md:p-8 flex-1 max-w-[1280px] w-full mx-auto">
-      
-<div class="flex items-center justify-between mb-6"><h1 class="text-2xl font-semibold">Organization Overview</h1></div>
-<p class="text-xs text-slate-400 mb-4">data as of 2026-05-28 09:00</p>
-<div class="grid sm:grid-cols-3 gap-4 mb-8"><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Downloads (30d)</div><div class="text-3xl font-semibold mt-1">1,284<span class="text-base text-slate-400 font-normal"> </span></div></div><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Entitlement usage</div><div class="text-3xl font-semibold mt-1">18 / 24<span class="text-base text-slate-400 font-normal"> products</span></div></div><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Active members</div><div class="text-3xl font-semibold mt-1">12<span class="text-base text-slate-400 font-normal"> </span></div></div></div>
-<div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
-  <div class="px-5 py-3 border-b border-slate-200 font-semibold">Recent downloads</div>
-  <table class="w-full text-sm"><thead class="bg-neutral-50 text-left text-xs text-slate-500 uppercase"><tr><th class="px-4 py-2">Member</th><th class="px-4 py-2">Dataset</th><th class="px-4 py-2">Version</th><th class="px-4 py-2">When</th></tr></thead>
-  <tbody>
-  <tr class="border-t border-slate-200"><td class="px-4 py-3">A. Patel</td><td class="px-4 py-3">Tropical Cyclone Rainfall</td><td class="px-4 py-3 font-mono">v3</td><td class="px-4 py-3 text-slate-500">2h ago</td></tr>
-  <tr class="border-t border-slate-200"><td class="px-4 py-3">M. Chen</td><td class="px-4 py-3">Sea Surface Temperature</td><td class="px-4 py-3 font-mono">v7</td><td class="px-4 py-3 text-slate-500">5h ago</td></tr>
-  </tbody></table>
+  <main class="main">
+    <div class="toolbar"><h1>Acme Weather Co. — Dashboard</h1><span class="muted" style="font-size:.8rem">data as of 2026-05-28 09:00</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <a class="card tile" href="#"><div class="muted" style="font-size:.85rem">Downloads (30d)</div><div class="v tabular">1,284</div><div class="muted" style="font-size:.8rem">↑ 12% vs prev</div></a>
+      <a class="card tile" href="catalog.html"><div class="muted" style="font-size:.85rem">Entitlement usage</div><div class="v tabular">7 / 9</div><div class="muted" style="font-size:.8rem">entitled products accessed</div></a>
+      <a class="card tile" href="org-members.html"><div class="muted" style="font-size:.85rem">Active members</div><div class="v tabular">14</div><div class="muted" style="font-size:.8rem">2 pending invites</div></a>
+    </div>
+    <h2 style="margin:1.5rem 0 .6rem">Recent downloads</h2>
+    <div class="card" style="overflow:hidden"><table class="table">
+      <thead><tr><th>Member</th><th>Data product</th><th>Version</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>jane@acme.com</td><td>Global Hourly Precipitation</td><td class="mono">v12</td><td>2h ago</td></tr>
+        <tr><td>raj@acme.com</td><td>Surface Temperature Grid</td><td class="mono">v21</td><td>5h ago</td></tr>
+        <tr><td>mei@acme.com</td><td>Global Hourly Precipitation</td><td class="mono">v11</td><td>yesterday</td></tr>
+      </tbody>
+    </table></div>
+  </main>
 </div>
-
-    </main>
-  </div>
-</div>
-</body>
-</html>
+</body></html>

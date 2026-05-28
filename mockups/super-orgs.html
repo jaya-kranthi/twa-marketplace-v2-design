@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Org Approval Queue — TWA Super Admin</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="logo" style="padding:.4rem .7rem 1rem">TWA <b>Super</b></div>
+    <nav style="display:flex;flex-direction:column;gap:.2rem">
+      <a class="navitem" href="super-dashboard.html">▦ Dashboard</a>
+      <a class="navitem active" href="super-orgs.html">⚑ Org Approvals</a>
+      <a class="navitem" href="super-dataproducts.html">▤ Catalog</a>
+      <a class="navitem" href="super-api-keys.html">⚿ API Keys</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <h1 style="margin-bottom:1rem">Org Approval Queue</h1>
+    <div role="tablist" style="display:flex;gap:.3rem;margin-bottom:1rem">
+      <button role="tab" aria-selected="true" class="btn btn-secondary">Pending (3)</button>
+      <button role="tab" aria-selected="false" class="btn btn-ghost">Active (46)</button>
+      <button role="tab" aria-selected="false" class="btn btn-ghost">Rejected (5)</button>
+    </div>
+    <div class="card" style="overflow:hidden"><table class="table">
+      <thead><tr><th>Organization</th><th>Contact</th><th>Intended use</th><th>Applied</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Northwind Logistics</td><td>ops@northwind.com</td><td class="muted">Route planning from precipitation feeds</td><td>2026-05-27</td><td style="white-space:nowrap"><button class="btn btn-primary" onclick="document.getElementById('ap').showModal()">Approve</button> <button class="btn btn-ghost" onclick="document.getElementById('rj').showModal()">Reject</button></td></tr>
+        <tr><td>AgriSense</td><td>data@agrisense.io</td><td class="muted">Crop models using temperature grids</td><td>2026-05-26</td><td style="white-space:nowrap"><button class="btn btn-primary">Approve</button> <button class="btn btn-ghost">Reject</button></td></tr>
+        <tr><td>SkyRoute Aviation</td><td>wx@skyroute.aero</td><td class="muted">Wind vector fields for flight planning</td><td>2026-05-25</td><td style="white-space:nowrap"><button class="btn btn-primary">Approve</button> <button class="btn btn-ghost">Reject</button></td></tr>
+      </tbody>
+    </table></div>
+  </main>
+</div>
+<dialog id="ap" class="card" style="padding:1.5rem;max-width:400px;border:none"><h2>Approve Northwind Logistics?</h2><p class="muted" style="font-size:.9rem;margin:.5rem 0 1.2rem">The org becomes active and the contact can sign in. This is a one-way transition.</p><div style="display:flex;justify-content:flex-end;gap:.5rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Approve</button></div></dialog>
+<dialog id="rj" class="card" style="padding:1.5rem;max-width:400px;border:none"><h2>Reject Northwind Logistics?</h2><p class="muted" style="font-size:.9rem;margin:.5rem 0 1.2rem">The application is rejected. This is a one-way transition.</p><div style="display:flex;justify-content:flex-end;gap:.5rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-danger" onclick="this.closest('dialog').close()">Reject</button></div></dialog>
+</body></html>

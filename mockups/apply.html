@@ -1,41 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Request access — TWA Marketplace</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>
-tailwind.config = { theme: { extend: {
-  fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['ui-monospace','Menlo','monospace'] },
-  colors: {
-    brand: {50:'#eff8ff',100:'#dbeefe',200:'#bfe1fe',300:'#93cefd',400:'#60b2fa',500:'#3b93f5',600:'#2575ea',700:'#1d5fd7',800:'#1e4eae',900:'#1d4489',950:'#172b53'},
-    accent: {300:'#76e7dd',400:'#37d2c7',500:'#1bb6ad',600:'#10928d',700:'#117472'},
-  }
-} } }
-</script>
-<style>body{font-family:Inter,system-ui,sans-serif}</style>
-</head>
-<body class="bg-neutral-50 text-slate-900">
-
-<div class="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-brand-50 to-accent-300/20">
-  <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-    <div class="flex items-center gap-2 mb-6">
-      <div class="h-9 w-9 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
-      <span class="font-semibold text-lg">TWA Marketplace</span>
-    </div>
-    
-<h1 class="text-xl font-semibold mb-1">Request organization access</h1>
-<p class="text-sm text-slate-500 mb-6">TWA will review your application and email you.</p>
-<label class="block mb-4"><span class="text-sm font-medium text-slate-700">Organization name</span><input type="text" placeholder="" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/></label>
-<label class="block mb-4"><span class="text-sm font-medium text-slate-700">Work email</span><input type="email" placeholder="" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/></label>
-<label class="block mb-4"><span class="text-sm font-medium text-slate-700">Contact name</span><input type="text" placeholder="" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/></label>
-<label class="block mb-4"><span class="text-sm font-medium text-slate-700">Intended use</span><textarea rows="3" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"></textarea></label>
-<button class="rounded-lg px-4 py-2 text-sm font-medium w-full bg-brand-600 text-white hover:bg-brand-700">Submit application</button>
-
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Org Application — TWA Marketplace</title><link rel="stylesheet" href="app.css"></head><body>
+<div class="authwrap">
+  <div class="card" style="width:100%;max-width:520px;padding:2rem">
+    <div class="logo" style="font-size:1.15rem;margin-bottom:.25rem">TWA <b>Marketplace</b></div>
+    <h1 style="margin-bottom:.4rem">Apply for an organization account</h1>
+    <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Applications are reviewed by TWA. You'll be notified once approved.</p>
+    <form onsubmit="return false">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem">
+        <div><label class="label" for="o">Organization name</label><input class="input" id="o" placeholder="Acme Weather Co."></div>
+        <div><label class="label" for="c">Contact name</label><input class="input" id="c" placeholder="Jane Doe"></div>
+      </div>
+      <label class="label" for="e" style="margin-top:.9rem">Contact email</label>
+      <input class="input" id="e" type="email" placeholder="jane@acme.com" style="margin-bottom:.9rem">
+      <label class="label" for="u">Intended use</label>
+      <textarea class="input" id="u" rows="3" placeholder="How will your organization use TWA weather data?"></textarea>
+      <button class="btn btn-primary" style="width:100%;margin-top:1rem" onclick="document.getElementById('ok').style.display='block'">Submit application</button>
+    </form>
+    <div id="ok" role="status" class="badge badge-ok" style="display:none;margin-top:1rem">Application received — pending review.</div>
+    <p class="muted" style="font-size:.85rem;text-align:center;margin-top:1rem"><a href="signin.html">Back to sign in</a></p>
   </div>
 </div>
-</body>
-</html>
+</body></html>
