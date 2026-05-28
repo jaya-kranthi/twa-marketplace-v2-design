@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Admin dashboard — TWA Marketplace</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['ui-monospace','Menlo','monospace'] },
+  colors: {
+    brand: {50:'#eff8ff',100:'#dbeefe',200:'#bfe1fe',300:'#93cefd',400:'#60b2fa',500:'#3b93f5',600:'#2575ea',700:'#1d5fd7',800:'#1e4eae',900:'#1d4489',950:'#172b53'},
+    accent: {300:'#76e7dd',400:'#37d2c7',500:'#1bb6ad',600:'#10928d',700:'#117472'},
+  }
+} } }
+</script>
+<style>body{font-family:Inter,system-ui,sans-serif}</style>
+</head>
+<body class="bg-neutral-50 text-slate-900">
+
+<div class="min-h-screen flex">
+  <aside class="hidden md:flex w-60 flex-col border-r border-slate-200 bg-white p-4 gap-1">
+    <div class="flex items-center gap-2 mb-5 px-1">
+      <div class="h-8 w-8 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
+      <span class="font-semibold">TWA Marketplace</span>
+    </div>
+    <a href="./admin-dashboard.html" class="block px-3 py-2 rounded-lg text-sm font-medium bg-brand-50 text-brand-700">Dashboard</a><a href="./admin-orgs.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Org Approvals</a><a href="./admin-dataproducts.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Data Products</a><a href="./admin-api-keys.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">API Keys</a><a href="./account.html" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-neutral-100">Account</a>
+  </aside>
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 md:px-6 gap-3">
+      <input placeholder="Search datasets…" class="hidden sm:block flex-1 max-w-md rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/>
+      <div class="flex items-center gap-3">
+        <span class="text-xs px-2 py-1 rounded-full bg-accent-500/15 text-accent-700 font-medium">Super Admin</span>
+        <div class="h-8 w-8 rounded-full bg-brand-100 text-brand-700 grid place-items-center text-sm font-semibold">JK</div>
+      </div>
+    </header>
+    <main class="p-4 md:p-8 flex-1 max-w-[1280px] w-full mx-auto">
+      
+<div class="flex items-center justify-between mb-6"><h1 class="text-2xl font-semibold">Platform Overview</h1></div>
+<p class="text-xs text-slate-400 mb-4">data as of 2026-05-28 09:00</p>
+<div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8"><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Platform downloads</div><div class="text-3xl font-semibold mt-1">38.2k<span class="text-base text-slate-400 font-normal"> </span></div></div><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Active orgs</div><div class="text-3xl font-semibold mt-1">46<span class="text-base text-slate-400 font-normal"> </span></div></div><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Catalog size</div><div class="text-3xl font-semibold mt-1">312<span class="text-base text-slate-400 font-normal"> ingestions</span></div></div><div class="bg-white rounded-xl border border-slate-200 p-5"><div class="text-sm text-slate-500">Pending approvals</div><div class="text-3xl font-semibold mt-1">3<span class="text-base text-slate-400 font-normal"> </span></div></div></div>
+<div class="bg-white rounded-xl border border-slate-200 p-6">
+  <h3 class="font-semibold mb-4">Downloads over time</h3>
+  <div class="h-40 flex items-end gap-2">
+    <div class="flex-1 bg-brand-500/80 rounded-t" style="height:30%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:45%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:40%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:60%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:72%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:55%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:80%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:68%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:90%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:75%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:85%"></div><div class="flex-1 bg-brand-500/80 rounded-t" style="height:95%"></div>
+  </div>
+</div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

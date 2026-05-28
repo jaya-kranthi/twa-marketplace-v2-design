@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sign in — TWA Marketplace</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['ui-monospace','Menlo','monospace'] },
+  colors: {
+    brand: {50:'#eff8ff',100:'#dbeefe',200:'#bfe1fe',300:'#93cefd',400:'#60b2fa',500:'#3b93f5',600:'#2575ea',700:'#1d5fd7',800:'#1e4eae',900:'#1d4489',950:'#172b53'},
+    accent: {300:'#76e7dd',400:'#37d2c7',500:'#1bb6ad',600:'#10928d',700:'#117472'},
+  }
+} } }
+</script>
+<style>body{font-family:Inter,system-ui,sans-serif}</style>
+</head>
+<body class="bg-neutral-50 text-slate-900">
+
+<div class="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-brand-50 to-accent-300/20">
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <div class="flex items-center gap-2 mb-6">
+      <div class="h-9 w-9 rounded-lg bg-brand-600 text-white grid place-items-center font-bold">T</div>
+      <span class="font-semibold text-lg">TWA Marketplace</span>
+    </div>
+    
+<h1 class="text-xl font-semibold mb-1">Sign in</h1>
+<p class="text-sm text-slate-500 mb-6">Access your weather data catalog.</p>
+<label class="block mb-4"><span class="text-sm font-medium text-slate-700">Email</span><input type="email" placeholder="you@company.com" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/></label>
+<label class="block mb-4"><span class="text-sm font-medium text-slate-700">Password</span><input type="password" placeholder="••••••••" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"/></label>
+<div class="mb-4 text-right"><a href="./forgot.html" class="text-sm text-brand-700 hover:underline">Forgot password?</a></div>
+<button class="rounded-lg px-4 py-2 text-sm font-medium w-full bg-brand-600 text-white hover:bg-brand-700">Sign in</button>
+<p class="text-sm text-slate-500 mt-6 text-center">No account? <a href="./apply.html" class="text-brand-700 hover:underline">Request organization access</a></p>
+
+  </div>
+</div>
+</body>
+</html>
