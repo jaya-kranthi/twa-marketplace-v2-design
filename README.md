@@ -4,11 +4,11 @@ UX mockups for the **TWA Cloud-Native Weather Data Marketplace (v2)**.
 
 This repo holds **HTML mockups only** (deployed to GitHub Pages for customer preview). All specs, architecture, contracts, and sign-offs live in Confluence:
 
-📄 **Canonical project docs:** [TWA Weather Data Marketplace v2 (Confluence)](https://minfyhelpdesk.atlassian.net/wiki/spaces/UED/pages/3797090305/TWA+Weather+Data+Marketplace+v2)
+📄 **Canonical project docs:** [twa-marketplace-v2 (Confluence)](https://minfyhelpdesk.atlassian.net/wiki/spaces/UED/pages/3798532097)
 
 ## Project snapshot
-- **Shape:** full-stack · **Flow:** ux-first · **Repos:** ui + api + worker
-- **Core:** subscription-based weather data marketplace; Data Product → many Ingestions (downloadable files); single shared platform; Bedrock NL catalog search.
+- **Shape:** full-stack · **Flow:** ux-first · **Repos:** ui + api + worker + infra
+- **Core:** subscription-based weather data marketplace; Data Product → many dataset versions (push-ZIP ingestion, Glacier auto-tier after 1yr); logical orgs (no hard tenant isolation); entitlement-by-data-product; Bedrock NL catalog search (no SageMaker). Audit log out of v1.
 
 ## Layout
 - `mockups/` — static HTML mockups (auto-deployed to GitHub Pages on push to `main`).
