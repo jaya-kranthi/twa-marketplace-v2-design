@@ -11,5 +11,8 @@
     "name": "twa-marketplace-v2-design",
     "repo_url": "https://github.com/jaya-kranthi/twa-marketplace-v2-design.git"
   },
-  "confluence_parent_page_url": "https://minfyhelpdesk.atlassian.net/wiki/spaces/UED/pages/3798532097"
+  "confluence_parent_page_url": "https://minfyhelpdesk.atlassian.net/wiki/spaces/UED/pages/3798532097",
+  "deploy_urls": {
+    "mockup": "https://jaya-kranthi.github.io/twa-marketplace-v2-design/"
+  }
 }
