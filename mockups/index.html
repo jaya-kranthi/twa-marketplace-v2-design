@@ -1,224 +1,239 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TWA Weather Data Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
-<style>
-  .roleseg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
-  .roleseg button{border:none;background:var(--surface);color:var(--muted);padding:.4rem .7rem;font-size:.8rem;font-weight:600;cursor:pointer}
-  .roleseg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
-  .navsection{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:.9rem .7rem .3rem;font-weight:700}
-  [data-view]{animation:fade .25s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}
-  @media (prefers-reduced-motion:reduce){[data-view]{animation:none}}
-</style></head>
+</head>
 <body data-role="user">
 
-<!-- ============ AUTH SHELL (pre-login routes) ============ -->
+<!-- ===================== AUTH SHELL ===================== -->
 <div id="auth-shell" style="display:none">
-  <div class="authwrap">
-    <section data-view="signin" class="card" style="width:100%;max-width:400px;padding:2rem">
-      <div class="logo" style="font-size:1.15rem;margin-bottom:.25rem">TWA <b>Marketplace</b></div>
-      <h1 style="margin-bottom:1.25rem">Sign in</h1>
-      <label class="label">Email</label><input class="input" type="email" placeholder="you@org.com" style="margin-bottom:.9rem">
-      <label class="label">Password</label><input class="input" type="password" placeholder="••••••••" style="margin-bottom:1rem">
-      <div style="text-align:right;margin-bottom:1rem"><a href="#/reset">Forgot password?</a></div>
-      <a class="btn btn-primary" style="width:100%;justify-content:center" href="#/catalog">Sign in</a>
-      <p class="muted" style="font-size:.85rem;text-align:center;margin-top:1.25rem">New organization? <a href="#/apply">Apply for an account</a></p>
-    </section>
-    <section data-view="reset" class="card" style="width:100%;max-width:400px;padding:2rem">
-      <h1 style="margin-bottom:.4rem">Reset your password</h1>
-      <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Enter your email and we'll send a reset link.</p>
-      <label class="label">Email</label><input class="input" type="email" style="margin-bottom:1rem">
-      <a class="btn btn-primary" style="width:100%;justify-content:center" href="#/signin">Send reset link</a>
-      <p class="muted" style="font-size:.85rem;text-align:center;margin-top:1rem"><a href="#/signin">Back to sign in</a></p>
-    </section>
-    <section data-view="invite" class="card" style="width:100%;max-width:400px;padding:2rem">
-      <h1 style="margin-bottom:.4rem">Join your organization</h1>
-      <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Invited to <strong style="color:var(--fg)">Acme Weather Co.</strong> as <span class="badge badge-muted">Org User</span></p>
-      <label class="label">Create password</label><input class="input" type="password" style="margin-bottom:.9rem">
-      <label class="label">Confirm password</label><input class="input" type="password" style="margin-bottom:1rem">
-      <a class="btn btn-primary" style="width:100%;justify-content:center" href="#/catalog">Join Acme Weather Co.</a>
-    </section>
-    <section data-view="apply" class="card" style="width:100%;max-width:520px;padding:2rem">
-      <h1 style="margin-bottom:.4rem">Apply for an organization account</h1>
-      <p class="muted" style="font-size:.9rem;margin-bottom:1.25rem">Reviewed by TWA. You'll be notified once approved.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem"><div><label class="label">Organization</label><input class="input" placeholder="Acme Weather Co."></div><div><label class="label">Contact name</label><input class="input"></div></div>
-      <label class="label" style="margin-top:.9rem">Contact email</label><input class="input" type="email" style="margin-bottom:.9rem">
-      <label class="label">Intended use</label><textarea class="input" rows="3"></textarea>
-      <a class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem" href="#/signin">Submit application</a>
-      <p class="muted" style="font-size:.85rem;text-align:center;margin-top:1rem"><a href="#/signin">Back to sign in</a></p>
-    </section>
-  </div>
+ <div class="authwrap"><div style="width:100%;max-width:420px">
+
+  <section data-view="signin" class="card">
+    <div class="logo" style="margin-bottom:.25rem">TWA <b>Marketplace</b></div>
+    <h1>Sign in</h1>
+    <label class="label">Email</label><input class="input" type="email" placeholder="you@org.com">
+    <label class="label">Password</label><input class="input" type="password" placeholder="••••••••">
+    <div style="text-align:right;margin:-.4rem 0 1rem"><a href="#/reset">Forgot password?</a></div>
+    <a class="btn btn-primary" style="width:100%" href="#/catalog">Sign in</a>
+    <p class="muted sm" style="text-align:center;margin-top:1rem">New organization? <a href="#/apply">Apply for an account</a></p>
+  </section>
+
+  <section data-view="apply" class="card">
+    <div class="stepper"><span class="on">1 · Organization</span><span>2 · Contact</span><span>3 · Review</span></div>
+    <h1>Apply for an account</h1><p class="muted sm">Tell us about your organization. A TWA admin reviews every application.</p>
+    <label class="label">Organization name</label><input class="input" placeholder="Acme Climate Labs">
+    <label class="label">Business type</label><select class="input"><option>Research</option><option>Insurance</option><option>Agriculture</option><option>Energy</option><option>Other</option></select>
+    <label class="label">Company size</label><select class="input"><option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option></select>
+    <a class="btn btn-primary" style="width:100%" href="#/pending">Continue → Submit</a>
+    <p class="muted sm" style="text-align:center;margin-top:1rem"><a href="#/signin">Back to sign in</a></p>
+  </section>
+
+  <section data-view="verify" class="card">
+    <h1>Check your email</h1><p class="muted sm">We sent a 6-digit code to your email.</p>
+    <input class="input" placeholder="● ● ● ● ● ●" style="text-align:center;letter-spacing:.5rem;font-size:1.2rem">
+    <a class="btn btn-primary" style="width:100%" href="#/catalog">Verify</a>
+    <p class="muted sm" style="text-align:center;margin-top:1rem"><a href="#/verify">Resend code</a> · available in 30s</p>
+  </section>
+
+  <section data-view="reset" class="card">
+    <h1>Reset password</h1><p class="muted sm">Enter your email and we'll send a reset link.</p>
+    <label class="label">Email</label><input class="input" type="email" placeholder="you@org.com">
+    <a class="btn btn-primary" style="width:100%" href="#/signin">Send reset link</a>
+    <p class="muted sm" style="text-align:center;margin-top:1rem"><a href="#/signin">Back to sign in</a></p>
+  </section>
+
+  <section data-view="invite" class="card">
+    <h1>You're invited to <span style="color:var(--accent)">Acme Climate Labs</span></h1>
+    <p class="muted sm">Set a password to activate your account.</p>
+    <label class="label">New password</label><input class="input" type="password">
+    <label class="label">Confirm password</label><input class="input" type="password">
+    <p class="muted sm" style="margin:-.3rem 0 1rem">8+ chars · 1 number · 1 symbol</p>
+    <a class="btn btn-primary" style="width:100%" href="#/catalog">Activate account</a>
+  </section>
+
+  <section data-view="pending" class="card" style="text-align:center">
+    <div style="font-size:2.5rem">🛰️</div>
+    <h1>Application under review</h1>
+    <p class="muted">A TWA admin is reviewing your organization. You'll get an email once approved — then you can invite your team.</p>
+    <a class="btn" href="#/signin">Back to sign in</a>
+  </section>
+
+ </div></div>
 </div>
 
-<!-- ============ APP SHELL (post-login) ============ -->
+<!-- ===================== APP SHELL ===================== -->
 <div id="app-shell">
-  <div class="topbar">
-    <div class="logo">TWA <b>Marketplace</b></div>
-    <div style="flex:1"></div>
-    <span class="muted" style="font-size:.75rem">Viewing as</span>
-    <div class="roleseg" role="group" aria-label="Switch role">
-      <button data-setrole="user">Org User</button>
-      <button data-setrole="admin">Org Admin</button>
-      <button data-setrole="super">Super Admin</button>
-    </div>
-    <a class="btn btn-ghost" data-nav="settings" href="#/settings" title="Settings">⚙</a>
-    <button class="btn btn-ghost" data-theme-toggle title="Toggle theme">◑</button>
-    <details style="position:relative"><summary class="btn btn-secondary" style="list-style:none">jane@acme.com ▾</summary>
-      <div class="card" style="position:absolute;right:0;top:46px;padding:.4rem;min-width:160px;z-index:5"><a class="navitem" href="#/settings">Settings</a><a class="navitem" href="#/signin">Sign out</a></div>
-    </details>
-  </div>
+ <div class="topbar">
+   <div class="logo">TWA <b>Marketplace</b></div>
+   <input class="input topsearch" style="margin:0" placeholder="Search the catalog…  (try: ‘rainfall over India 2024’)" onkeydown="if(event.key==='Enter')location.hash='#/catalog'">
+   <span class="muted sm">Viewing as</span>
+   <div class="roleseg" role="group" aria-label="Role switcher">
+     <button data-role-btn="user" aria-pressed="true">Org User</button>
+     <button data-role-btn="admin" aria-pressed="false">Org Admin</button>
+     <button data-role-btn="super" aria-pressed="false">Super Admin</button>
+   </div>
+   <button class="iconbtn" id="themeToggle" title="Toggle theme">🌗</button>
+   <button class="iconbtn" title="Notifications">🔔</button>
+ </div>
 
-  <div class="shell">
-    <aside class="sidebar">
-      <nav style="display:flex;flex-direction:column;gap:.15rem">
-        <a class="navitem" data-nav="catalog" href="#/catalog">▤ Catalog</a>
+ <div class="app">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main">
 
-        <div class="navsection" data-roles="admin super">Org Admin</div>
-        <a class="navitem" data-roles="admin super" data-nav="admin" href="#/admin">▦ Dashboard</a>
-        <a class="navitem" data-roles="admin super" data-nav="admin-members" href="#/admin-members">◍ Members</a>
-        <a class="navitem" data-roles="admin super" data-nav="admin-subscription" href="#/admin-subscription">★ Subscription</a>
+   <!-- S7 Catalog -->
+   <section data-view="catalog">
+     <h1>Catalog</h1><p class="muted sm">Discover curated satellite weather datasets.</p>
+     <div style="margin:1rem 0"><input class="input" style="margin:0" placeholder="Ask in plain English — e.g. ‘daily precipitation, South India, last 2 years’ (NL search)"></div>
+     <div class="catlayout">
+       <aside class="filters card" style="padding:1rem">
+         <h3>Filters</h3>
+         <label class="label">Category</label><select class="input"><option>All</option><option>Precipitation</option><option>Temperature</option><option>Wind</option><option>Storm tracks</option></select>
+         <label class="label">Updated</label><select class="input"><option>Any time</option><option>Last 30 days</option><option>Last year</option></select>
+         <label style="display:flex;gap:.4rem;align-items:center;font-size:.85rem"><input type="checkbox"> Entitled only</label>
+       </aside>
+       <div style="flex:1">
+         <div class="grid grid-3">
+           <a class="card" href="#/dataset/1"><span class="tag">Precipitation</span><h3 style="margin:.5rem 0 .25rem">Global Rainfall Daily</h3><p class="muted sm">12 versions · updated 2026-05-20</p><span class="badge badge-success">✓ Entitled</span></a>
+           <a class="card" href="#/dataset/2"><span class="tag">Temperature</span><h3 style="margin:.5rem 0 .25rem">Surface Temp Hourly</h3><p class="muted sm">8 versions · updated 2026-05-18</p><span class="badge badge-success">✓ Entitled</span></a>
+           <a class="card lock" href="#/dataset/3"><span class="tag">Storm tracks</span><h3 style="margin:.5rem 0 .25rem">Cyclone Tracks HD</h3><p class="muted sm">5 versions · updated 2026-04-30</p><span class="badge badge-muted">🔒 Locked — not in plan</span></a>
+           <a class="card" href="#/dataset/4"><span class="tag">Wind</span><h3 style="margin:.5rem 0 .25rem">Wind Vectors 10m</h3><p class="muted sm">3 versions · updated 2026-05-01</p><span class="badge badge-success">✓ Entitled</span></a>
+         </div>
+         <div class="pager"><button class="btn btn-sm">‹</button><button class="btn btn-sm btn-primary">1</button><button class="btn btn-sm">2</button><button class="btn btn-sm">›</button></div>
+       </div>
+     </div>
+   </section>
 
-        <div class="navsection" data-roles="super">Super Admin</div>
-        <a class="navitem" data-roles="super" data-nav="super" href="#/super">▦ Platform</a>
-        <a class="navitem" data-roles="super" data-nav="super-orgs" href="#/super-orgs">⚑ Org Approvals</a>
-        <a class="navitem" data-roles="super" data-nav="super-products" href="#/super-products">▤ Catalog Mgmt</a>
+   <!-- S8 Dataset detail -->
+   <section data-view="dataset">
+     <a href="#/catalog" class="sm">← Back to catalog</a>
+     <div class="row between center" style="margin:.5rem 0 1rem"><div><h1>Global Rainfall Daily</h1><span class="tag">Precipitation</span> <span class="badge badge-success">✓ Entitled</span></div><button class="btn btn-primary" onclick="document.getElementById('dlToast').showModal()">⬇ Download latest</button></div>
+     <div class="catlayout">
+       <div style="flex:1">
+         <div class="card" style="margin-bottom:1rem"><h3>About</h3><p class="muted sm">Daily aggregated rainfall derived from Phantom satellite feeds. Curated, QA'd, and versioned by TWA.</p></div>
+         <div class="card"><h3>Versions</h3>
+           <table><thead><tr><th>Version</th><th>Date</th><th>State</th><th>Storage</th><th>Size</th><th></th></tr></thead><tbody>
+             <tr><td class="mono">v12</td><td>2026-05-20</td><td><span class="badge badge-success">published</span></td><td>S3</td><td>2.1 GB</td><td><button class="btn btn-sm">⬇</button></td></tr>
+             <tr><td class="mono">v11</td><td>2026-04-20</td><td><span class="badge badge-success">published</span></td><td>S3</td><td>2.0 GB</td><td><button class="btn btn-sm">⬇</button></td></tr>
+             <tr class="lock"><td class="mono">v3</td><td>2025-03-01</td><td><span class="badge badge-warning">archived</span></td><td><span class="badge badge-info">Glacier</span></td><td>1.7 GB</td><td><button class="btn btn-sm" title="Restore may take time">⏳ Restore</button></td></tr>
+           </tbody></table>
+         </div>
+       </div>
+       <aside class="filters card" style="padding:1rem"><h3>Entitlement</h3><p class="sm">Included in your <b>Growth</b> plan.</p><p class="muted sm">Active until 2026-12-31</p></aside>
+     </div>
+   </section>
 
-        <div class="navsection">Account</div>
-        <a class="navitem" data-nav="settings" href="#/settings">⚙ Settings</a>
-      </nav>
-    </aside>
+   <!-- S9 Dashboard -->
+   <section data-view="dashboard">
+     <h1>Dashboard</h1><p class="muted sm" id="dashSub">Your activity at a glance.</p>
+     <div class="grid grid-4" id="dashTiles" style="margin-top:1rem"></div>
+   </section>
 
-    <main class="main">
-      <!-- S5 Catalog -->
-      <section data-view="catalog">
-        <h1 style="margin-bottom:1rem">Dataset Catalog</h1>
-        <input class="input" placeholder="Search datasets, e.g. &quot;hourly rainfall, last 30 days&quot;" style="margin-bottom:.8rem">
-        <div class="toolbar">
-          <div style="display:flex;gap:.6rem;align-items:center"><select class="input" style="width:auto"><option>All categories</option><option>Precipitation</option><option>Temperature</option><option>Wind</option></select><div class="chips"><span class="badge">hourly</span><span class="badge">gridded</span></div></div>
-          <select class="input" style="width:auto"><option>Sort: Relevance</option><option>Most recent</option></select>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
-          <a class="card" href="#/product" style="padding:1.1rem;display:block"><div style="display:flex;justify-content:space-between"><h3>Global Hourly Precipitation</h3><span class="badge badge-ok">Entitled</span></div><p class="muted" style="font-size:.85rem;margin:.4rem 0">Curated hourly rainfall, gridded 0.25°.</p><div class="chips"><span class="badge">Precipitation</span></div><p class="muted" style="font-size:.78rem;margin-top:.7rem">12 versions</p></a>
-          <a class="card lock" href="#/product" style="padding:1.1rem;display:block"><div style="display:flex;justify-content:space-between"><h3>Satellite Cloud Mask</h3><span class="badge badge-muted">🔒 Locked</span></div><p class="muted" style="font-size:.85rem;margin:.4rem 0">Per-pixel cloud classification.</p><div class="chips"><span class="badge">Satellite</span></div><p class="muted" style="font-size:.78rem;margin-top:.7rem">Upgrade to access · 8 versions</p></a>
-          <a class="card" href="#/product" style="padding:1.1rem;display:block"><div style="display:flex;justify-content:space-between"><h3>Surface Temperature Grid</h3><span class="badge badge-ok">Entitled</span></div><p class="muted" style="font-size:.85rem;margin:.4rem 0">Daily mean surface temperature.</p><div class="chips"><span class="badge">Temperature</span></div><p class="muted" style="font-size:.78rem;margin-top:.7rem">21 versions</p></a>
-        </div>
-      </section>
+   <!-- S10 Activity & Reports -->
+   <section data-view="activity">
+     <div class="toolbar"><h1>Activity & Reports</h1><button class="btn">⬇ Export CSV/Excel</button></div>
+     <div class="row" style="margin-bottom:1rem"><select class="input" style="width:160px;margin:0"><option>Last 30 days</option><option>Last 7 days</option><option>This year</option></select><select class="input" style="width:160px;margin:0"><option>All types</option><option>Downloads</option><option>Ingestions</option><option>Key usage</option></select></div>
+     <div class="card" style="padding:0">
+       <table><thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Target</th></tr></thead><tbody>
+         <tr><td class="sm">2026-05-28 14:02</td><td>you</td><td>Download</td><td>Global Rainfall Daily v12</td></tr>
+         <tr><td class="sm">2026-05-27 09:41</td><td>you</td><td>Download</td><td>Surface Temp Hourly v8</td></tr>
+         <tr><td class="sm">2026-05-25 17:20</td><td>API key ·***a4f</td><td>Key usage</td><td>catalog query</td></tr>
+       </tbody></table>
+     </div>
+   </section>
 
-      <!-- S6 Product detail -->
-      <section data-view="product">
-        <div class="crumb"><a href="#/catalog">Catalog</a> / Global Hourly Precipitation</div>
-        <div style="display:flex;justify-content:space-between;align-items:start;gap:1rem;flex-wrap:wrap">
-          <div><h1>Global Hourly Precipitation</h1><p class="muted" style="margin:.5rem 0;max-width:640px">Curated hourly rainfall accumulation, gridded at 0.25°, global coverage.</p><div class="chips"><span class="badge">Precipitation</span><span class="badge">hourly</span><span class="badge">gridded</span></div></div>
-          <div class="card" style="padding:1rem;min-width:200px"><div class="muted" style="font-size:.8rem">Entitlement</div><div class="badge badge-ok" style="margin-top:.3rem">Active — included in plan</div></div>
-        </div>
-        <h2 style="margin:1.5rem 0 .6rem">Dataset versions</h2>
-        <div class="card" style="overflow:hidden"><table class="table"><thead><tr><th aria-sort="descending">Version</th><th>File</th><th>Size</th><th>Published</th><th>Lifecycle</th><th></th></tr></thead><tbody>
-          <tr><td class="mono">v12</td><td>precip_2026-05-28.nc</td><td class="tabular">2.4 GB</td><td>2026-05-28</td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-primary">Download</button></td></tr>
-          <tr><td class="mono">v11</td><td>precip_2026-05-21.nc</td><td class="tabular">2.3 GB</td><td>2026-05-21</td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-secondary">Download</button></td></tr>
-          <tr><td class="mono">v10</td><td>precip_2026-05-14.nc</td><td class="tabular">2.3 GB</td><td>2026-05-14</td><td><span class="badge badge-muted">deprecated</span></td><td><button class="btn btn-secondary">Download</button></td></tr>
-        </tbody></table></div>
-      </section>
+   <!-- S11 Subscription (Org Admin) -->
+   <section data-view="subscription">
+     <h1>Subscription</h1>
+     <div class="card" style="margin:1rem 0;max-width:520px"><div class="row between center"><div><h2 style="margin:0">Growth plan</h2><span class="badge badge-success">active</span></div><div class="muted sm">Renews 2026-12-31</div></div>
+       <h3 style="margin-top:1rem">Entitled data products</h3><ul class="muted sm"><li>Global Rainfall Daily</li><li>Surface Temp Hourly</li><li>Wind Vectors 10m</li></ul>
+       <button class="btn btn-primary" onclick="document.getElementById('planModal').showModal()">Request plan change</button>
+     </div>
+   </section>
 
-      <!-- S7 Org dashboard -->
-      <section data-view="admin">
-        <div class="toolbar"><h1>Acme Weather Co. — Dashboard</h1><span class="muted" style="font-size:.8rem">data as of 2026-05-28 09:00</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-          <a class="card tile" href="#/admin"><div class="muted" style="font-size:.85rem">Downloads (30d)</div><div class="v tabular">1,284</div></a>
-          <a class="card tile" href="#/catalog"><div class="muted" style="font-size:.85rem">Entitlement usage</div><div class="v tabular">7 / 9</div></a>
-          <a class="card tile" href="#/admin-members"><div class="muted" style="font-size:.85rem">Active members</div><div class="v tabular">14</div></a>
-        </div>
-      </section>
+   <!-- S12 Members (Org Admin) -->
+   <section data-view="members">
+     <div class="toolbar"><h1>Members</h1><button class="btn btn-primary" onclick="document.getElementById('inviteModal').showModal()">+ Invite member</button></div>
+     <div class="card" style="padding:0"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th></th></tr></thead><tbody>
+       <tr><td>Priya N.</td><td class="sm">priya@acme.com</td><td>Org Admin</td><td><span class="badge badge-success">active</span></td><td><button class="btn btn-sm">Manage</button></td></tr>
+       <tr><td>Sam K.</td><td class="sm">sam@acme.com</td><td>Org User</td><td><span class="badge badge-success">active</span></td><td><button class="btn btn-sm">Manage</button></td></tr>
+       <tr><td>—</td><td class="sm">newhire@acme.com</td><td>Org User</td><td><span class="badge badge-warning">pending</span></td><td><button class="btn btn-sm">Resend</button> <button class="btn btn-sm btn-danger">Revoke</button></td></tr>
+     </tbody></table></div>
+   </section>
 
-      <!-- S8 Members -->
-      <section data-view="admin-members">
-        <div class="toolbar"><h1>Members</h1><button class="btn btn-primary" onclick="document.getElementById('inv').showModal()">+ Invite members</button></div>
-        <div class="card" style="overflow:hidden"><table class="table"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th></th></tr></thead><tbody>
-          <tr><td>Jane Doe</td><td>jane@acme.com</td><td><span class="badge">Org Admin</span></td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-ghost" disabled title="Cannot remove last admin">Remove</button></td></tr>
-          <tr><td>Raj Patel</td><td>raj@acme.com</td><td><span class="badge">Org User</span></td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-ghost">Remove</button></td></tr>
-          <tr><td>—</td><td>mei@acme.com</td><td><span class="badge">Org User</span></td><td><span class="badge badge-warn">pending</span></td><td><button class="btn btn-ghost">Resend</button></td></tr>
-        </tbody></table></div>
-      </section>
+   <!-- S13 Settings -->
+   <section data-view="settings">
+     <h1>Settings</h1>
+     <div class="tabs" id="settingsTabs">
+       <span class="tab on" data-tab="profile">Profile</span><span class="tab" data-tab="password">Password</span>
+       <span class="tab" data-tab="notif">Notifications</span><span class="tab" data-tab="keys" data-admin>API Keys</span><span class="tab" data-tab="account">Account</span>
+     </div>
+     <div data-tabpane="profile" class="card" style="max-width:480px"><label class="label">Full name</label><input class="input" value="Sam Kapoor"><label class="label">Email</label><input class="input" value="sam@acme.com" disabled><button class="btn btn-primary">Save</button></div>
+     <div data-tabpane="password" class="card" style="max-width:480px;display:none"><label class="label">Current password</label><input class="input" type="password"><label class="label">New password</label><input class="input" type="password"><button class="btn btn-primary">Update password</button></div>
+     <div data-tabpane="notif" class="card" style="max-width:480px;display:none"><h3>Email & in-app</h3><label style="display:block;margin:.5rem 0"><input type="checkbox" checked> New dataset published</label><label style="display:block;margin:.5rem 0"><input type="checkbox" checked> Subscription expiry / renewal</label><label style="display:block;margin:.5rem 0"><input type="checkbox"> Ingestion completed</label><button class="btn btn-primary">Save preferences</button></div>
+     <div data-tabpane="keys" class="card" style="display:none"><div class="toolbar"><h3 style="margin:0">API Keys</h3><button class="btn btn-primary" onclick="document.getElementById('keyModal').showModal()">+ Generate key</button></div>
+       <p class="muted sm">Created by Org Admins & Super Admins. Org Admins can share a key with members for programmatic access.</p>
+       <table><thead><tr><th>Label</th><th>Key</th><th>Scope</th><th>Last used</th><th>Status</th><th></th></tr></thead><tbody>
+         <tr><td>ETL pipeline</td><td class="mono sm">twa_••••a4f</td><td>consume</td><td class="sm">2026-05-25</td><td><span class="badge badge-success">active</span></td><td><button class="btn btn-sm" data-adminonly>Share</button> <button class="btn btn-sm btn-danger">Revoke</button></td></tr>
+       </tbody></table>
+     </div>
+     <div data-tabpane="account" class="card" style="max-width:480px;display:none"><h3>Deactivate account</h3><p class="muted sm">This is irreversible.</p><button class="btn btn-danger">Deactivate my account</button></div>
+   </section>
 
-      <!-- S9 Subscription -->
-      <section data-view="admin-subscription">
-        <h1 style="margin-bottom:1rem">Subscription &amp; Entitlements</h1>
-        <div class="card" style="padding:1.2rem;margin-bottom:1rem"><div class="muted" style="font-size:.85rem">Current plan</div><div style="font-size:1.25rem;font-weight:600">Professional</div><span class="badge badge-ok">active</span> <span class="muted" style="font-size:.85rem">renews 2026-07-01</span></div>
-        <div role="radiogroup" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
-          <div class="card" style="padding:1.1rem"><h3>Starter</h3><button class="btn btn-secondary" style="width:100%;margin-top:.6rem">Select</button></div>
-          <div class="card" style="padding:1.1rem;border-color:var(--accent)"><h3>Professional</h3><button class="btn btn-secondary" style="width:100%;margin-top:.6rem" disabled>Current</button></div>
-          <div class="card" style="padding:1.1rem"><h3>Enterprise</h3><button class="btn btn-primary" style="width:100%;margin-top:.6rem">Upgrade</button></div>
-        </div>
-        <p class="muted" style="font-size:.8rem;margin-top:.8rem">Billing handled out-of-band — no payment in-app.</p>
-      </section>
+   <!-- S14 Data Products (Super) -->
+   <section data-view="dataproducts">
+     <div class="toolbar"><h1>Data Products</h1><button class="btn btn-primary">+ New data product</button></div>
+     <div class="card" style="padding:0"><table><thead><tr><th>Product</th><th>Category</th><th>Versions</th><th>Latest state</th><th></th></tr></thead><tbody>
+       <tr><td>Global Rainfall Daily</td><td>Precipitation</td><td>12</td><td><span class="badge badge-success">published</span></td><td><button class="btn btn-sm" onclick="document.getElementById('pushModal').showModal()">⬆ Push version</button></td></tr>
+       <tr><td>Cyclone Tracks HD</td><td>Storm tracks</td><td>5</td><td><span class="badge badge-success">published</span></td><td><button class="btn btn-sm" onclick="document.getElementById('pushModal').showModal()">⬆ Push version</button></td></tr>
+     </tbody></table></div>
+     <p class="muted sm" style="margin-top:.75rem">↻ Datasets older than 1 year auto-tier to Glacier (retention policy).</p>
+   </section>
 
-      <!-- S10 Platform dashboard -->
-      <section data-view="super">
-        <div class="toolbar"><h1>Platform Dashboard</h1><span class="muted" style="font-size:.8rem">data as of 2026-05-28 09:00</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
-          <a class="card tile" href="#/super"><div class="muted" style="font-size:.85rem">Platform downloads (30d)</div><div class="v tabular">38,902</div></a>
-          <a class="card tile" href="#/super-orgs"><div class="muted" style="font-size:.85rem">Active orgs</div><div class="v tabular">46</div></a>
-          <a class="card tile" href="#/super-products"><div class="muted" style="font-size:.85rem">Catalog size</div><div class="v tabular">128</div></a>
-        </div>
-      </section>
+   <!-- S15 Approvals (Super) -->
+   <section data-view="approvals">
+     <h1>Approvals</h1>
+     <div class="tabs" id="apprTabs"><span class="tab on" data-atab="orgs">Org applications</span><span class="tab" data-atab="plans">Plan changes</span></div>
+     <div data-apane="orgs" class="card" style="padding:0"><table><thead><tr><th>Organization</th><th>Applicant</th><th>Submitted</th><th></th></tr></thead><tbody>
+       <tr><td>Northwind Agri</td><td class="sm">ops@northwind.com</td><td class="sm">2026-05-27</td><td><button class="btn btn-sm btn-primary">Approve</button> <button class="btn btn-sm btn-danger">Reject</button></td></tr>
+     </tbody></table></div>
+     <div data-apane="plans" class="card" style="padding:0;display:none"><table><thead><tr><th>Org</th><th>Change</th><th>Requested</th><th></th></tr></thead><tbody>
+       <tr><td>Acme Climate Labs</td><td class="sm">Growth → Enterprise</td><td class="sm">2026-05-28</td><td><button class="btn btn-sm btn-primary">Approve & provision</button> <button class="btn btn-sm btn-danger">Reject</button></td></tr>
+     </tbody></table></div>
+   </section>
 
-      <!-- S11 Org approvals -->
-      <section data-view="super-orgs">
-        <h1 style="margin-bottom:1rem">Org Approval Queue</h1>
-        <div class="card" style="overflow:hidden"><table class="table"><thead><tr><th>Organization</th><th>Contact</th><th>Intended use</th><th>Applied</th><th></th></tr></thead><tbody>
-          <tr><td>Northwind Logistics</td><td>ops@northwind.com</td><td class="muted">Route planning</td><td>2026-05-27</td><td style="white-space:nowrap"><button class="btn btn-primary">Approve</button> <button class="btn btn-ghost">Reject</button></td></tr>
-          <tr><td>AgriSense</td><td>data@agrisense.io</td><td class="muted">Crop models</td><td>2026-05-26</td><td style="white-space:nowrap"><button class="btn btn-primary">Approve</button> <button class="btn btn-ghost">Reject</button></td></tr>
-        </tbody></table></div>
-      </section>
+   <!-- S16 Plans (Super) -->
+   <section data-view="plans">
+     <div class="toolbar"><h1>Plans</h1><button class="btn btn-primary">+ New tier</button></div>
+     <div class="grid grid-3">
+       <div class="card"><h3>Starter</h3><p class="muted sm">2 data products · 5 members</p><button class="btn btn-sm">Edit</button></div>
+       <div class="card"><h3>Growth</h3><p class="muted sm">5 data products · 25 members</p><button class="btn btn-sm">Edit</button></div>
+       <div class="card"><h3>Enterprise</h3><p class="muted sm">All products · unlimited</p><button class="btn btn-sm">Edit</button></div>
+     </div>
+   </section>
 
-      <!-- S12 Catalog mgmt -->
-      <section data-view="super-products">
-        <div class="toolbar"><h1>Data Products</h1><button class="btn btn-primary">+ Create data product</button></div>
-        <div class="card" style="overflow:hidden"><table class="table"><thead><tr><th>Name</th><th>Category</th><th>Governance</th><th>Versions</th><th></th></tr></thead><tbody>
-          <tr><td>Global Hourly Precipitation</td><td>Precipitation</td><td><span class="badge badge-ok">published</span></td><td class="tabular">12</td><td><a href="#/super-product">Manage</a></td></tr>
-          <tr><td>Sea Surface Salinity</td><td>Ocean</td><td><span class="badge badge-warn">draft</span></td><td class="tabular">0</td><td><a href="#/super-product">Manage</a></td></tr>
-        </tbody></table></div>
-      </section>
+   <!-- S17 Organizations (Super) -->
+   <section data-view="orgs">
+     <div class="toolbar"><h1>Organizations</h1><select class="input" style="width:160px;margin:0"><option>All statuses</option><option>Active</option><option>Pending</option><option>Suspended</option></select></div>
+     <div class="card" style="padding:0"><table><thead><tr><th>Org</th><th>Status</th><th>Members</th><th>Tier</th><th>Created</th></tr></thead><tbody>
+       <tr><td>Acme Climate Labs</td><td><span class="badge badge-success">active</span></td><td>24</td><td>Growth</td><td class="sm">2026-01-12</td></tr>
+       <tr><td>Northwind Agri</td><td><span class="badge badge-warning">pending</span></td><td>—</td><td>—</td><td class="sm">2026-05-27</td></tr>
+       <tr><td>Helios Energy</td><td><span class="badge badge-danger">suspended</span></td><td>11</td><td>Enterprise</td><td class="sm">2025-09-03</td></tr>
+     </tbody></table></div>
+   </section>
 
-      <!-- S13 Data product mgmt -->
-      <section data-view="super-product">
-        <div class="crumb"><a href="#/super-products">Data Products</a> / Global Hourly Precipitation</div>
-        <div class="toolbar"><h1>Global Hourly Precipitation</h1><div style="display:flex;align-items:center;gap:.6rem"><span class="badge badge-ok">published</span><button class="btn btn-secondary">Set to draft</button></div></div>
-        <p class="muted" style="font-size:.82rem;margin-bottom:.8rem">Ingestions arrive via the push API — lifecycle-tag &amp; govern versions here.</p>
-        <div class="card" style="overflow:hidden"><table class="table"><thead><tr><th>Version</th><th>File</th><th>Published</th><th>Lifecycle</th><th>Retention</th></tr></thead><tbody>
-          <tr><td class="mono">v12</td><td>precip_2026-05-28.nc</td><td>2026-05-28</td><td><select class="input" style="width:auto;min-height:32px"><option>active</option><option>deprecated</option><option>archived</option></select></td><td>365d</td></tr>
-          <tr style="opacity:.55"><td class="mono">v3</td><td>precip_2026-03-05.nc</td><td>2026-03-05</td><td><span class="badge badge-muted">archived</span></td><td>expired</td></tr>
-        </tbody></table></div>
-      </section>
-
-      <!-- Settings (all roles); API Keys section super-only -->
-      <section data-view="settings">
-        <h1 style="margin-bottom:1rem">Settings</h1>
-        <div class="card" style="padding:1.2rem;margin-bottom:1rem">
-          <h2 style="margin-bottom:.8rem">Profile</h2>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;max-width:560px"><div><label class="label">Name</label><input class="input" value="Jane Doe"></div><div><label class="label">Email</label><input class="input" value="jane@acme.com" disabled></div></div>
-          <button class="btn btn-secondary" style="margin-top:.9rem">Change password</button>
-        </div>
-        <div class="card" style="padding:1.2rem;margin-bottom:1rem">
-          <h2 style="margin-bottom:.8rem">Appearance</h2>
-          <button class="btn btn-secondary" data-theme-toggle>◑ Toggle light / dark</button>
-        </div>
-        <!-- Ingestion API keys — Super Admin only (security model: scoped keys issued by super admins) -->
-        <div class="card" style="padding:1.2rem" data-roles="super">
-          <div class="toolbar"><h2>Ingestion API Keys</h2><button class="btn btn-primary" onclick="document.getElementById('ck').showModal()">+ Create key</button></div>
-          <p class="muted" style="font-size:.82rem;margin-bottom:.8rem">Scoped keys for the push-ingestion API. Issued + revoked by Super Admins.</p>
-          <div style="overflow:hidden"><table class="table"><thead><tr><th>Label</th><th>Scope</th><th>Last used</th><th>Status</th><th></th></tr></thead><tbody>
-            <tr><td>Phantom curator — precip</td><td>Global Hourly Precipitation</td><td>2h ago</td><td><span class="badge badge-ok">active</span></td><td><button class="btn btn-ghost">Revoke</button></td></tr>
-            <tr style="opacity:.55"><td>Legacy loader</td><td>(all)</td><td>30d ago</td><td><span class="badge badge-muted">revoked</span></td><td>—</td></tr>
-          </tbody></table></div>
-        </div>
-      </section>
-    </main>
-  </div>
+  </main>
+ </div>
 </div>
 
-<!-- dialogs -->
-<dialog id="inv" class="card" style="padding:1.5rem;max-width:460px;border:none"><h2>Invite members</h2><p class="muted" style="font-size:.85rem;margin:.3rem 0 1rem">One email per line. Re-inviting re-sends, not duplicates.</p><textarea class="input" rows="4" placeholder="alex@acme.com&#10;sam@acme.com"></textarea><select class="input" style="margin-top:.8rem"><option>Org User</option><option>Org Admin</option></select><div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1.2rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Send invites</button></div></dialog>
-<dialog id="ck" class="card" style="padding:1.5rem;max-width:460px;border:none"><h2>Create ingestion API key</h2><label class="label" style="margin-top:.8rem">Label</label><input class="input"><label class="label" style="margin-top:.8rem">Scope</label><select class="input"><option>Global Hourly Precipitation</option><option>Surface Temperature Grid</option></select><div class="badge badge-warn" style="margin-top:1rem">The secret is shown once on create — copy it immediately.</div><div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1.2rem"><button class="btn btn-secondary" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Create</button></div></dialog>
+<!-- ===================== DIALOGS ===================== -->
+<dialog id="inviteModal"><h2>Invite member</h2><label class="label">Email</label><input class="input" placeholder="name@acme.com"><label class="label">Name</label><input class="input"><label class="label">Role</label><select class="input"><option>Org User</option><option>Org Admin</option></select><label class="label">Message (optional)</label><textarea class="input" rows="2"></textarea><div class="row between"><button class="btn" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Send invite</button></div></dialog>
+<dialog id="planModal"><h2>Request plan change</h2><label class="label">Target tier</label><select class="input"><option>Enterprise</option><option>Starter</option></select><label class="label">Reason</label><textarea class="input" rows="2" placeholder="Why this change?"></textarea><p class="muted sm">A Super Admin reviews + provisions (no payment needed).</p><div class="row between"><button class="btn" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Submit request</button></div></dialog>
+<dialog id="keyModal"><h2>API key generated</h2><p class="muted sm">Copy it now — you won't see it again.</p><div class="card mono" style="word-break:break-all">twa_live_8f3a92c4b7e14d0a9f6b2c1e</div><div class="row between" style="margin-top:1rem"><button class="btn" onclick="this.closest('dialog').close()">Done</button><button class="btn btn-primary">Copy</button></div></dialog>
+<dialog id="pushModal"><h2>Push new version</h2><p class="muted sm">Drag-drop a dataset ZIP. It's validated, then published.</p><div class="card" style="text-align:center;border-style:dashed">⬆ Drop ZIP here<br><span class="muted sm">or click to browse</span></div><div class="row between" style="margin-top:1rem"><button class="btn" onclick="this.closest('dialog').close()">Cancel</button><button class="btn btn-primary" onclick="this.closest('dialog').close()">Upload & ingest</button></div></dialog>
+<dialog id="dlToast"><h2>Download started</h2><p class="muted sm">Global Rainfall Daily v12 (2.1 GB) — large files stream in the background. Recorded in your Activity.</p><button class="btn btn-primary" onclick="this.closest('dialog').close()">OK</button></dialog>
 
 <script src="app.js"></script>
 </body></html>

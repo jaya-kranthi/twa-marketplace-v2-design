@@ -1,77 +1,147 @@
-// TWA Marketplace mockup SPA — hash router + role switcher + theme. Pure JS, no build.
+// twa-marketplace-v2 mockup SPA — hash router + role switcher + theme. Pure JS, no build.
 (function () {
-  // Routes that require the app shell (post-login) vs bare auth cards.
-  const AUTH = new Set(["signin", "reset", "invite", "apply"]);
+  "use strict";
 
-  // Per-route minimum role visibility (access-matrix). user < admin < super.
-  const RANK = { user: 1, admin: 2, super: 3 };
-  const ROUTE_MIN = {
-    catalog: "user", product: "user", settings: "user",
-    "admin": "admin", "admin-members": "admin", "admin-subscription": "admin",
-    "super": "super", "super-orgs": "super", "super-products": "super",
-    "super-product": "super", "super-keys": "super",
+  // ---- which views live in the auth shell vs app shell ----
+  var AUTH = ["signin","apply","verify","reset","invite","pending"];
+
+  // ---- nav per role (route, label) ----
+  var NAV = {
+    user: [
+      ["Discover", [["catalog","Catalog"],["dashboard","Dashboard"]]],
+      ["Me",       [["activity","Activity"],["settings","Settings"]]]
+    ],
+    admin: [
+      ["Discover",     [["catalog","Catalog"],["dashboard","Dashboard"]]],
+      ["Organization", [["members","Members"],["subscription","Subscription"]]],
+      ["Me",           [["activity","Activity"],["settings","Settings"]]]
+    ],
+    super: [
+      ["Discover", [["catalog","Catalog"],["dashboard","Dashboard"]]],
+      ["Platform", [["dataproducts","Data Products"],["approvals","Approvals"],["plans","Plans"],["orgs","Organizations"]]],
+      ["Me",       [["activity","Activity"],["settings","Settings"]]]
+    ]
   };
 
-  function role() { return localStorage.getItem("twa-role") || "user"; }
-  function setRole(r) { localStorage.setItem("twa-role", r); applyRole(); route(); }
+  // routes only reachable by certain roles (app shell)
+  var GATED = {
+    subscription:["admin","super"], members:["admin","super"],
+    dataproducts:["super"], approvals:["super"], plans:["super"], orgs:["super"]
+  };
 
-  function applyRole() {
-    const r = role();
-    document.body.setAttribute("data-role", r);
-    // role switcher active state
-    document.querySelectorAll("[data-setrole]").forEach(b =>
-      b.setAttribute("aria-pressed", b.dataset.setrole === r));
-    // show/hide elements gated by data-roles="admin super" etc.
-    document.querySelectorAll("[data-roles]").forEach(el => {
-      const allowed = el.dataset.roles.split(/\s+/);
-      el.style.display = allowed.includes(r) ? "" : "none";
+  // ---- dashboard tiles per role ----
+  var TILES = {
+    user:[["My Downloads","18","this month"],["Available Datasets","42","entitled + new"]],
+    admin:[["Org Usage","134","downloads · 24 members"],["Subscription","Growth","renews 2026-12-31"],["Pending Invites","1","awaiting accept"]],
+    super:[["Platform Ingestions","27","✓25 ⚠1 ✗1"],["Pending Approvals","2","1 org · 1 plan"],["Active Subscriptions","38","across tiers"],["Data Products","14","published"]]
+  };
+
+  function role(){ return document.body.getAttribute("data-role") || "user"; }
+
+  function currentView(){
+    var h = (location.hash || "#/signin").replace(/^#\//,"");
+    return h.split("/")[0] || "signin";
+  }
+
+  function renderSidebar(){
+    var nav = document.getElementById("sidebar"); if(!nav) return;
+    var r = role(), html = "";
+    NAV[r].forEach(function(sec){
+      html += '<div class="navsection">'+sec[0]+'</div>';
+      sec[1].forEach(function(item){
+        html += '<a class="navlink" data-route="'+item[0]+'" href="#/'+item[0]+'">'+item[1]+'</a>';
+      });
     });
+    nav.innerHTML = html;
   }
 
-  function currentView() {
-    const h = (location.hash.replace(/^#\/?/, "") || "catalog").split("/")[0];
-    return h;
+  function renderDash(){
+    var box = document.getElementById("dashTiles"); if(!box) return;
+    var r = role();
+    document.getElementById("dashSub").textContent =
+      r==="super" ? "Platform health at a glance." : r==="admin" ? "Your organization at a glance." : "Your activity at a glance.";
+    box.innerHTML = TILES[r].map(function(t){
+      return '<div class="tile"><div class="ttl">'+t[0]+'</div><div class="val">'+t[1]+'</div><div class="asof">'+t[2]+' · data as of 14:00</div></div>';
+    }).join("");
   }
 
-  function route() {
-    let v = currentView();
-    const isAuth = AUTH.has(v);
-    document.getElementById("app-shell").style.display = isAuth ? "none" : "";
-    document.getElementById("auth-shell").style.display = isAuth ? "" : "none";
+  // toggle admin-only UI bits (API Keys tab, share button)
+  function applyRoleVisibility(){
+    var r = role(), adminish = (r==="admin"||r==="super");
+    document.querySelectorAll("[data-admin]").forEach(function(el){ el.style.display = adminish ? "" : "none"; });
+    document.querySelectorAll("[data-adminonly]").forEach(function(el){ el.style.display = (r==="admin") ? "" : "none"; });
+  }
 
-    // role-gate: if the target needs a higher role than selected, redirect to a safe view.
-    if (!isAuth && ROUTE_MIN[v] && RANK[role()] < RANK[ROUTE_MIN[v]]) {
-      v = "catalog"; location.hash = "#/catalog"; // access denied → bounce to catalog
-    }
+  function route(){
+    var v = currentView();
+    var isAuth = AUTH.indexOf(v) >= 0;
 
-    document.querySelectorAll("[data-view]").forEach(sec => {
-      sec.style.display = sec.dataset.view === v ? "" : "none";
+    // gating: if a gated app route isn't allowed for this role, redirect to catalog
+    if(!isAuth && GATED[v] && GATED[v].indexOf(role())<0){ location.hash="#/catalog"; return; }
+
+    document.getElementById("auth-shell").style.display = isAuth ? "block" : "none";
+    document.getElementById("app-shell").style.display  = isAuth ? "none"  : "block";
+
+    // show only the matching section
+    document.querySelectorAll("[data-view]").forEach(function(s){
+      s.style.display = (s.getAttribute("data-view")===v) ? "" : "none";
     });
-    // active nav highlight
-    document.querySelectorAll("[data-nav]").forEach(a =>
-      a.classList.toggle("active", a.dataset.nav === v));
-    window.scrollTo(0, 0);
+
+    // active nav
+    document.querySelectorAll(".navlink").forEach(function(a){
+      a.classList.toggle("active", a.getAttribute("data-route")===v);
+    });
+
+    if(v==="dashboard") renderDash();
+    applyRoleVisibility();
+    window.scrollTo(0,0);
   }
 
-  function toggleTheme() {
-    const root = document.documentElement;
-    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("twa-theme", next);
-  }
-
-  window.addEventListener("hashchange", route);
-  window.addEventListener("DOMContentLoaded", function () {
-    const t = localStorage.getItem("twa-theme");
-    if (t) document.documentElement.setAttribute("data-theme", t);
-    document.querySelectorAll("[data-setrole]").forEach(b =>
-      b.addEventListener("click", () => setRole(b.dataset.setrole)));
-    document.querySelectorAll("[data-theme-toggle]").forEach(b =>
-      b.addEventListener("click", toggleTheme));
-    if (!location.hash) location.hash = "#/catalog";
-    applyRole();
-    route();
+  // ---- role switcher ----
+  document.querySelectorAll("[data-role-btn]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll("[data-role-btn]").forEach(function(b){ b.setAttribute("aria-pressed","false"); });
+      btn.setAttribute("aria-pressed","true");
+      document.body.setAttribute("data-role", btn.getAttribute("data-role-btn"));
+      renderSidebar(); route();
+    });
   });
 
-  window.TWA = { setRole, toggleTheme };
+  // ---- theme toggle (persist) ----
+  var saved = localStorage.getItem("twa-theme");
+  if(saved) document.documentElement.setAttribute("data-theme", saved);
+  var tt = document.getElementById("themeToggle");
+  if(tt) tt.addEventListener("click", function(){
+    var cur = document.documentElement.getAttribute("data-theme");
+    var next = cur==="dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("twa-theme", next);
+  });
+
+  // ---- Settings tabs ----
+  document.addEventListener("click", function(e){
+    var tab = e.target.closest("#settingsTabs .tab");
+    if(tab){
+      document.querySelectorAll("#settingsTabs .tab").forEach(function(t){ t.classList.remove("on"); });
+      tab.classList.add("on");
+      var name = tab.getAttribute("data-tab");
+      document.querySelectorAll("[data-tabpane]").forEach(function(p){
+        p.style.display = (p.getAttribute("data-tabpane")===name) ? "" : "none";
+      });
+    }
+    var atab = e.target.closest("#apprTabs .tab");
+    if(atab){
+      document.querySelectorAll("#apprTabs .tab").forEach(function(t){ t.classList.remove("on"); });
+      atab.classList.add("on");
+      var an = atab.getAttribute("data-atab");
+      document.querySelectorAll("[data-apane]").forEach(function(p){
+        p.style.display = (p.getAttribute("data-apane")===an) ? "" : "none";
+      });
+    }
+  });
+
+  window.addEventListener("hashchange", route);
+  renderSidebar();
+  if(!location.hash) location.hash = "#/signin";
+  route();
 })();
